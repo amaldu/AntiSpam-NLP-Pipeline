@@ -1,19 +1,18 @@
 # Spam Message Detector Model 
 
-Let's create a spam detector to that employees get only relevant messages/email and it filters out all irrelevant/spam messages.
+## Description
 
-The model should be able to guage whether it is a *spam* or an *ham* message.
+Thisproject presents a step-by-step guide to building an efficient e-mail spam classification model using the e-mail Spam Collection dataset. By the end of this notebook, you'll have a powerful tool to help you filter out unwanted e-mails and ensure that your inbox is not filled with unnecessary content. </span>
 
 ### About the data
-### 
-
+The dataset used for this project can be found [here](https://www.kaggle.com/datasets/mfaisalqureshi/spam-email)
 * Our IT Team has already scraped all the messages in an excel file for us.
 * The files contain one message per line.
 * Each line is composed of different message.
 
-### About this file
-### 
+## Tech stack
 
-The e-mail Spam Collection is a set of e-mails tagged messages that have been collected for e-mail Spam research. It contains one set of e-mails messages in English of 5,574 messages, tagged according being *ham* (legitimate) or *spam*.
-Through these message we can easily train our model for better prediction of the ham messages and properly detect the spam message which is not so much useful for us.
+## Design
+
+## To run the project
 

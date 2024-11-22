@@ -9,7 +9,7 @@ By the end of this project, you'll have a powerful tool to help you filter out u
 ![spam classification](images/intro.png)
 
 
-### About the data
+## About the data
 The dataset used for this project can be found [here](https://www.kaggle.com/datasets/mfaisalqureshi/spam-email)
 
 

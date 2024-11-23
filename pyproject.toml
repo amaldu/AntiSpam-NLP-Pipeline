@@ -7,6 +7,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+kagglehub = "^0.3.4"
+wordcloud = "^1.9.4"
+nltk = "^3.9.1"
 
 [tool.poetry.group.dev.dependencies]
 numpy = "^2.1.3"

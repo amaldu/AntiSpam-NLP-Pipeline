@@ -410,6 +410,20 @@ files = [
 ]
 
 [[package]]
+name = "emoji"
+version = "2.14.0"
+description = "Emoji for Python"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "emoji-2.14.0-py3-none-any.whl", hash = "sha256:fcc936bf374b1aec67dda5303ae99710ba88cc9cdce2d1a71c5f2204e6d78799"},
+    {file = "emoji-2.14.0.tar.gz", hash = "sha256:f68ac28915a2221667cddb3e6c589303c3c6954c6c5af6fefaec7f9bdf72fdca"},
+]
+
+[package.extras]
+dev = ["coverage", "pytest (>=7.4.4)"]
+
+[[package]]
 name = "exceptiongroup"
 version = "1.2.2"
 description = "Backport of PEP 654 (exception groups)"
@@ -2038,4 +2052,4 @@ pillow = "*"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "53a1eb23765f203a1ef5e83dff31fd687a7845c3091c8c05730773d95a8cd1a5"
+content-hash = "7becdabb0cb72f3e428b08d3ddff982d64e0d8e576a253f44d002e220c246f73"

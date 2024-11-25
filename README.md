@@ -31,11 +31,21 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 
 
-## Technlogies
+## Technologies
 
-
+- Docker
 
 ## Installation
+
+
+build docker container 
+
+docker build -t mlflow .
+
+run docker container
+
+docker run -p 5000:5000 -v $(pwd)/mlflow_artifacts:/mlflow/artifacts mlflow
+
 
 ## Conclusions
 

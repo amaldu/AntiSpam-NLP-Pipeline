@@ -57,7 +57,7 @@ F1-score: combines precision and recall and it's useful when there is an imbalan
 
 
 <div style="text-align: center;">
-<img src="images/Confusion-matrix-Precision-Recall-Accuracy-and-F1-score.jpg" width="500"/>
+    <img src="images/Confusion-matrix-Precision-Recall-Accuracy-and-F1-score.jpg" width="500"/>
 </div>
 
 

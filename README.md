@@ -49,11 +49,11 @@ docker run -p 5000:5000 -v $(pwd)/mlflow_artifacts:/mlflow/artifacts mlflow
 
 ## Metrics used
 
-Precision: measures the accuracy of the positive predictions made by the model
+**Precision**: measures the accuracy of the positive predictions made by the model
 
-Recall: measures the ability of the model to detect all the instances of the positive class
+**Recall**: measures the ability of the model to detect all the instances of the positive class
 
-F1-score: combines precision and recall and it's useful when there is an imbalance between the classes (our case)
+**F1-score**: combines precision and recall and it's useful when there is an imbalance between the classes (our case)
 
 
 <p align="center">
@@ -63,7 +63,7 @@ F1-score: combines precision and recall and it's useful when there is an imbalan
 
 #### Why not other metrics?
 
-Accuracy is the proportion of correct predictions (TPs & TNs) over all predictions. In an imbalanced dataset like ours where one class dominates, a model can achieve high accuracy by mostly predicting the majority class. However, this doesn't necessarily mean the model is performing well.
+**Accuracy**: measures the proportion of correct predictions (TPs & TNs) over all predictions. In an imbalanced dataset like ours where one class dominates, a model can achieve high accuracy by mostly predicting the majority class. However, this doesn't necessarily mean the model is performing well.
 
 Choosing precision, recall and f1-score is better because they focus on the model's performance of the minority class too.
 

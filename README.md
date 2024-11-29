@@ -61,7 +61,7 @@ F1-score: combines precision and recall and it's useful when there is an imbalan
 </p>
 
 
-### Why not others?
+#### Why not other metrics?
 
 Accuracy is the proportion of correct predictions (TPs & TNs) over all predictions. In an imbalanced dataset like ours where one class dominates, a model can achieve high accuracy by mostly predicting the majority class. However, this doesn't necessarily mean the model is performing well.
 

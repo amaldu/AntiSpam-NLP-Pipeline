@@ -55,7 +55,7 @@ Recall: measures the ability of the model to detect all the instances of the pos
 
 F1-score: combines precision and recall and it's useful when there is an imbalance between the classes (our case)
 
-<img src="images/Confusion-matrix-Precision-Recall-Accuracy-and-F1-score.jpg" width="200"/>
+<img src="images/Confusion-matrix-Precision-Recall-Accuracy-and-F1-score.jpg" width="500"/>
 
 ### Why not others?
 

@@ -54,6 +54,7 @@ Precision: measures the accuracy of the positive predictions made by the model
 Recall: measures the ability of the model to detect all the instances of the positive class
 
 F1-score: combines precision and recall and it's useful when there is an imbalance between the classes (our case)
+
 ![metrics](images/Confusion-matrix-Precision-Recall-Accuracy-and-F1-score.png)
 
 ### Why not others?

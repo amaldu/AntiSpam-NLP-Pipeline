@@ -60,6 +60,7 @@ docker run -p 5000:5000 -v $(pwd)/mlflow_artifacts:/mlflow/artifacts mlflow
   <img src="images/Confusion-matrix-Precision-Recall-Accuracy-and-F1-score.jpg" width="500"/>
 </p>
 
+**ROC-AUC Curve**: the ROC curve plots the true positive rate (recall) against the false positive rate (1 - specificity) at different classification thresholds. AUC (Area Under the Curve) measures the overall ability of the model to distinguish between classes.
 
 #### Why not other metrics?
 

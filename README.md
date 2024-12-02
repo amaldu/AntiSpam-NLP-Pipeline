@@ -73,7 +73,8 @@ Choosing precision, recall and f1-score is better because they focus on the mode
 1. Base model BOW + Multinomial Naive Bayes
 
 Classification Report (Test):
-              precision    recall  f1-score   support
+                 
+                  precision    recall  f1-score   support
 
            0       0.99      0.97      0.98       453
            1       0.82      0.95      0.88        63
@@ -84,7 +85,7 @@ Classification Report (Test):
 
 - Recall 0.95: the model is detecting a 95% of the class 1
 
-- Precision 0.82: there is a significative number of False Positives
+- Precision 0.82: lower than we would like to because there is a significative number of False Positives
 
 - F1-score 0.88: decent value but since recall is high and precission not that much there is room for improvement.
 

@@ -3741,6 +3741,17 @@ files = [
 ]
 
 [[package]]
+name = "pynvml"
+version = "11.5.3"
+description = "Python utilities for the NVIDIA Management Library"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "pynvml-11.5.3-py3-none-any.whl", hash = "sha256:a5fba3ab14febda50d19dbda012ef62ae0aed45b7ccc07af0bc5be79223e450c"},
+    {file = "pynvml-11.5.3.tar.gz", hash = "sha256:183d223ae487e5f00402d8da06c68c978ef8a9295793ee75559839c6ade7b229"},
+]
+
+[[package]]
 name = "pyparsing"
 version = "3.2.0"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
@@ -5187,4 +5198,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "a9d4ecdb574acdc21ced7a7694e3952e76deb5bea3a7550c872524c3c44724f1"
+content-hash = "2b511117c7d3aabba9ff2d1c8530905440984a33e4b213fcd2f1808749b61cb7"

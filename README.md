@@ -79,14 +79,14 @@ Classification Report (Test):
            1       0.82      0.95      0.88        63
 
     accuracy                           0.97       516
-    macro avg       0.91      0.96      0.93       516
-    weighted avg       0.97      0.97      0.97       516
+    macro avg      0.91      0.96      0.93       516
+    weighted avg   0.97      0.97      0.97       516
 
-Recall 0.95: the model is detecting a 95% of the class 1
+- Recall 0.95: the model is detecting a 95% of the class 1
 
-Precision 0.82: there is a significative number of False Positives
+- Precision 0.82: there is a significative number of False Positives
 
-F1-score 0.88: decent value but since recall is high and precission not that much there is room for improvement.
+- F1-score 0.88: decent value but since recall is high and precission not that much there is room for improvement.
 
 
 ## Conclusions

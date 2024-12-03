@@ -6,14 +6,14 @@
 
 1. [Objective](#Objective)
 2. [About the data](#About-the-data)
-3. [Methods used](#Methods-used) Long section with reasonings of why when and what
+3. [Methods used](#Methods-used) Theory behind Decision-Making Process 🚧
     - [EDA](#EDA)
     - [Cleaning](#Cleaning)
-    - [Base Model](#Base-Model)
-4. [Metrics used](#Metrics-used)
-5. [Experimentation](#Experimentation)
-6. [Technologies](#Technologies)
-7. [Installation](#Installation)
+    - [Base Model](#Base-Model) 🚧
+4. [Metrics used](#Metrics-used) Theory behind Decision-Making Process 🚧
+5. [Experimentation](#Experimentation) 🚧
+6. [Technologies](#Technologies) 🚧
+7. [Installation](#Installation) 🚧
 
 
 # Objective

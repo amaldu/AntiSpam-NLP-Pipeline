@@ -21,13 +21,20 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 ## Methods Used
 
-1. Punctuation removal 
+### EDA [External Link](https://github.com/AMaldu/spam_detector/blob/main/notebooks/preprocessing.ipynb)
+    1. Viz of basic information about the dataset.
+    2. Change data types for more memory efficiency and data integrity.
+    3. Removal of duplicates.
+    4. Basic viz of features.
+
+### Cleaning: same notebook as before
+    1. Special replacements based on analysis from this notebook [External Link](https://github.com/AMaldu/spam_detector/blob/main/notebooks/special_chars_analysis.ipynb)
     1. Remove urls, @users and numbers
     2. Remove every character that is not alphanumeric (like #)
     3. Lower every letter
     3. Delete extra whitespaces
 
-2. Base model: Multinomial Naive Bayes 
+### Base model: Multinomial Naive Bayes 
 
 The Multinomial Naive Bayes (MNB) model is a variant of the Naive Bayes algorithm that is particularly suited for classification tasks where the features are counts or frequencies of words (or other types of features) in text data. It is called "multinomial" because it assumes that the features (typically word counts) follow a multinomial distribution.
 

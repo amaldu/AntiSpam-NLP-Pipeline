@@ -28,11 +28,17 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
     4. Basic viz of features.
 
 ### Cleaning: same notebook as before + [Special replacements analysis](https://github.com/AMaldu/spam_detector/blob/main/notebooks/special_chars_analysis.ipynb)
-    1. Special replacements  
-    1. Remove urls, @users and numbers
-    2. Remove every character that is not alphanumeric (like #)
-    3. Lower every letter
-    3. Delete extra whitespaces
+    1. Replacement of special replacements  
+    2. Replacement of emojis
+    3. Conversion to lowecase
+    4. Removal of HTML tags
+    5. Removal of URLs
+    6. Replacement of numbers with "number"
+    7. Replacement of e-mail addresses with "emailaddr"
+    8. Removal of punctutation
+    9. Removal of Non-Alphabetic Characters
+    10. Collapse of multiple whitespaces into single whitespace
+
 
 ### Base model: Multinomial Naive Bayes 
 

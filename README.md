@@ -83,7 +83,7 @@ Naive Bayes classifiers are based on Bayes' Theorem and assume that the features
 
 The Multinomial Naive Bayes is particularly effective for problems where the features are word counts or frequency counts of events, such as in text classification problems.
 
-And why Multinomial?
+**And why Multinomial?**
 
 Well, since I'm going to use a non-binary BOW and this is a first approach I will leave other Naive Bayes algorithms for later. What could I use? 
 

@@ -53,8 +53,7 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 ***BOW*** is an easy approach to the ham-spam problem that I considered useful for the following reasons:
 
 1. BOW is simple to implement and understand
-2. The frequency of certain words can be indicative of spam or ham
-3. The semantic meaning of the e-mails is not that important because we are focusing on capturing keywords or phrases like  "free", "money", "offer", "limited time", "winner" that can lead us to a good classification.
+2. The semantic meaning of the e-mails is not that important because we are focusing on capturing keywords or phrases like  "free", "money", "offer", "limited time", "winner" and their frequencies can be indicative of spam or ham.
 3. This is a vectorizer for the purpose of creating a base model. Let's keep it simple :)
 
 **What is Multinomial Naive Bayes and why using it?**

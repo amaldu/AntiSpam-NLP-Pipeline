@@ -5,8 +5,10 @@
 ## Index of contents
 
 1. [Objective](##Objective)
-2. [About the data](##Aboutthedata)
-3. [Uso](#uso)
+2. [About the data](##About-the-data)
+3. [Methods used](##Methods-used)
+    - [EDA](###EDA)
+    - [Cleaning](###Cleaning)
 4. [Contribución](#contribución)
 5. [Licencia](#licencia)
 
@@ -29,7 +31,7 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 2. ***Message*** column with a list of messages without any type of format
 
-## Methods Used
+## Methods used
 
 ### [EDA](https://github.com/AMaldu/spam_detector/blob/main/notebooks/preprocessing.ipynb)
 1. Analysis of basic information about the dataset.

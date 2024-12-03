@@ -42,7 +42,7 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 ### Base-model: BOW + Multinomial Naive Bayes 
 
-**What is BOW and why BOW?**
+**What is BOW and why using it?**
 
 BOW is a text representation technique that transforms text data into a set of features. Here's how it works:
 

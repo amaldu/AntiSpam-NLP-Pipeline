@@ -10,7 +10,7 @@
     - [EDA](#EDA)
     - [Cleaning](#Cleaning)
     - [Base Model](#Base-Model) 🚧
-4.    - [Metrics used](#Metrics-used) Theory behind Decision-Making Process 🚧
+      - [Metrics used](#Metrics-used) Theory behind Decision-Making Process 🚧
 5. [Experimentation](#Experimentation) 🚧
 6. [Technologies](#Technologies) 🚧
 7. [Installation](#Installation) 🚧

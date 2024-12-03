@@ -14,8 +14,8 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 1. ***Category*** column with the following labels:
 
-    * HAM: real e-mails we want the filter to land our inbox
-    * SPAM: spam/scam em-amils that we want to send directly to the spam folder
+- HAM: real e-mails we want the filter to land our inbox
+- SPAM: spam/scam em-amils that we want to send directly to the spam folder
 
 2. ***Message*** column with a list of messages without any type of format
 
@@ -59,7 +59,7 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 **What is Multinomial Naive Bayes and why using it?**
 
-The ***Multinomial Naive Bayes (MNB) model*** is a variant of the Naive Bayes algorithm that is particularly suited for classification tasks where the features are counts or frequencies of words in text data. It is called "multinomial" because it assumes that the features (typically word counts) follow a multinomial distribution like ours where the dependen variables are represented by the frequency of each word in the text data.
+The ***Multinomial Naive Bayes (MNB) model*** is a variant of the Naive Bayes algorithm that is particularly suited for classification tasks where the features are counts or frequencies of words in text data. It is called "multinomial" because it assumes that the features (typically word counts) follow a multinomial distribution like ours where the dependent variables are represented by the frequency of each word in the text data.
 
 Naive Bayes classifiers are based on Bayes' Theorem and assume that the features (in this case, the words in a text document) are conditionally independent given the class. While this assumption is often unrealistic in practice, it simplifies the computation, making Naive Bayes a very efficient algorithm.
 

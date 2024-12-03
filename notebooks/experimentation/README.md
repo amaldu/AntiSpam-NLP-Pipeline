@@ -57,7 +57,7 @@ A high precision value for the spam class indicates that most e-mails classified
 **Recall** Out of all the real positives, how many positives we got right? 
 
 <p align="center">
-  <img src="../../images/recall.png" width="500"/>
+  <img src="../../images/recall.jpg" width="500"/>
 </p>
 A good recall for the spam class indicates that the model is identifying most of the spam emails.
 

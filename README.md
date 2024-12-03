@@ -6,7 +6,7 @@
 
 1. [Objective](#Objective)
 2. [About the data](#About-the-data)
-3. [Methods used](#Methods-used)
+3. [Methods used](#Methods-used) Long section with reasonings of why when and what
     - [EDA](#EDA)
     - [Cleaning](#Cleaning)
     - [Base Model](#Base-Model)
@@ -79,17 +79,17 @@ Same notebook as EDA + [Special Replacements Analysis notebook](https://github.c
 
 The ***Multinomial Naive Bayes (MNB) model*** is a variant of the Naive Bayes algorithm that is particularly suited for classification tasks where the features are counts or frequencies of words in text data. It is called "multinomial" because it assumes that the features (typically word counts) follow a multinomial distribution like ours where the dependent variables are represented by the frequency of each word in the text data.
 
-Naive Bayes classifiers are based on Bayes' Theorem and assume that the features (in this case, the words in a text document) are conditionally independent given the class. While this assumption is often unrealistic in practice, it simplifies the computation, making Naive Bayes a very efficient algorithm.
+Naive Bayes classifiers are based on Bayes' Theorem and assume that the features are conditionally independent given the class. While this assumption is often unrealistic in practice, it simplifies the computation, making Naive Bayes a very efficient algorithm.
 
 The Multinomial Naive Bayes is particularly effective for problems where the features are word counts or frequency counts of events, such as in text classification problems.
 
 **And why Multinomial?**
 
-Well, since I'm going to use a non-binary BOW and this is a first approach I will leave other Naive Bayes algorithms for later. What could I use? 
+The dataset is going to be processed by a non-binary BOW (so we will get word frequencies) and this is a first approach I will leave other Naive Bayes algorithms for later. What could I use in the future? 
 
 - Binary BOW + Bernoulli Naive Bayes, since it's suitable for working in the presence (1) or absence (0) or a word.
 
-- If my dataset is very imbalaced I can use BOW + Complement Naive Bayes.
+- Since my dataset is very imbalaced I can use BOW + Complement Naive Bayes that focuses more on the minority class.
 
 # Metrics used
 
@@ -137,7 +137,9 @@ The ROC curve plots the true positive rate (recall) against the false positive r
 
 **Accuracy**
 
-It measures the proportion of correct predictions (TPs & TNs) over all predictions. In an imbalanced dataset like ours where one class dominates (ham), a model can achieve high accuracy by mostly predicting the majority class. However, this doesn't necessarily mean the model is performing well.
+It measures the proportion of correct predictions (TPs & TNs) over all predictions. In an imbalanced dataset like ours where one class dominates (ham), a model can achieve high accuracy by mostly predicting the majority class. This is very important to remember.
+
+**Error Rate**
 
 Choosing precision, recall and f1-score is better because they focus on the model's performance of the minority class too.
 

@@ -5,7 +5,7 @@
 ## Index of contents
 
 1. [Objective](##Objective)
-2. [Instalación](#instalación)
+2. [About the data](##Aboutthedata)
 3. [Uso](#uso)
 4. [Contribución](#contribución)
 5. [Licencia](#licencia)

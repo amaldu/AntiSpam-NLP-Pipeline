@@ -49,7 +49,7 @@ Our the dataset is very imbalanced with a 13.41% of SPAM so our metrics have to 
 **Precision** Out of all predicted positives, how many positives we got right?
 
 <p align="center">
-  <img src="images/precision.png" width="500"/>
+  <img src="../../images/precision.png" width="500"/>
 </p>
 
 A high precision value for the spam class indicates that most e-mails classified as spam by the model are actually spam.
@@ -64,7 +64,7 @@ A good recall for the spam class indicates that the model is identifying most of
 **F1-score** Harmonic mean of precision and recall.
 
 <p align="center">
-  <img src="images/f1-score.png" width="500"/>
+  <img src="../../images/f1-score.jpg" width="500"/>
 </p>
 
 We have to make sure the F1-score is high.
@@ -74,7 +74,7 @@ We have to make sure the F1-score is high.
 The confusion matrix shows the number of true positives, false positives, true negatives, and false negatives.
 
 <p align="center">
-  <img src="images/confusion-matrix.png" width="500"/>
+  <img src="../../images/confusion-matrix.png" width="500"/>
 </p>
 
 

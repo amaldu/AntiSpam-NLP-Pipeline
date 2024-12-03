@@ -7,8 +7,13 @@
 1. [Objective](#Objective)
 2. [About the data](#About-the-data)
 3. [Methods used](#Methods-used)
-4. [Contribución](#contribución)
-5. [Licencia](#licencia)
+    - [EDA](##EDA)
+    - [Cleaning](##Cleaning)
+    - [Base Model](##Base-Model)
+4. [Metrics used](#Metrics-used)
+5. [Experimentation](#Experimentation)
+6. [Technologies](#Technologies)
+7. [Installation](#Installation)
 
 
 # Objective
@@ -29,15 +34,17 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 2. ***Message*** column with a list of messages without any type of format
 
-## Methods used
+# Methods used
 
-### [EDA](https://github.com/AMaldu/spam_detector/blob/main/notebooks/preprocessing.ipynb)
+## EDA
+[Notebook](https://github.com/AMaldu/spam_detector/blob/main/notebooks/preprocessing.ipynb)
 1. Analysis of basic information about the dataset.
 2. Change data types for more memory efficiency and data integrity.
 3. Removal of duplicates.
 4. Basic viz of features.
 
-### Cleaning: same notebook as before + [Special Replacements Analysis notebook](https://github.com/AMaldu/spam_detector/blob/main/notebooks/special_chars_analysis.ipynb)
+## Cleaning
+Same notebook as before + [Special Replacements Analysis notebook](https://github.com/AMaldu/spam_detector/blob/main/notebooks/special_chars_analysis.ipynb)
 1. Replacement of special replacements  
 2. Replacement of emojis
 3. Conversion to lowecase
@@ -50,7 +57,9 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 10. Collapse of multiple whitespaces into single whitespace
 
 
-### Base-model: BOW + Multinomial Naive Bayes 
+## Base-model
+
+### BOW + Multinomial Naive Bayes 
 
 **What is BOW and why using it?**
 
@@ -82,26 +91,7 @@ Well, since I'm going to use a non-binary BOW and this is a first approach I wil
 
 - If my dataset is very imbalaced I can use BOW + Complement Naive Bayes.
 
-
-
-
-## Technologies
-
-- Docker
-
-## Installation
-
-
-build docker container 
-
-docker build -t mlflow .
-
-run docker container
-
-docker run -p 5000:5000 -v $(pwd)/mlflow_artifacts:/mlflow/artifacts mlflow
-
-
-## Metrics used
+# Metrics used
 
 Our the dataset is very imbalanced with a 13.41% of SPAM so it's important to choose the right metrics for the evaluation of the model. Those metrics have to provide a clear vision of the model performance in the minority class.
 
@@ -143,7 +133,7 @@ Balanced accuracy is the average of the recall for both classes. It is useful in
 
 The ROC curve plots the true positive rate (recall) against the false positive rate (1 - specificity) at different classification thresholds. AUC (Area Under the Curve) measures the overall ability of the model to distinguish between classes. It's important to minimize false negatives for spam.
 
-#### Why not other metrics?
+## Why not other metrics?
 
 **Accuracy**
 
@@ -151,7 +141,8 @@ It measures the proportion of correct predictions (TPs & TNs) over all predictio
 
 Choosing precision, recall and f1-score is better because they focus on the model's performance of the minority class too.
 
-## Experimentation: 
+
+# Experimentation
 
 1. Base model BOW + Multinomial Naive Bayes
 
@@ -174,5 +165,45 @@ Classification Report (Test):
 - F1-score 0.88: decent value but since recall is high and precission not that much there is room for improvement.
 
 
-## Conclusions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Technologies
+
+- Docker
+
+# Installation
+
+
+build docker container 
+
+docker build -t mlflow .
+
+run docker container
+
+docker run -p 5000:5000 -v $(pwd)/mlflow_artifacts:/mlflow/artifacts mlflow
+
+
+
+
+# Conclusions
 

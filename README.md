@@ -22,7 +22,7 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 ## Methods Used
 
 ### [EDA](https://github.com/AMaldu/spam_detector/blob/main/notebooks/preprocessing.ipynb)
-1. Viz of basic information about the dataset.
+1. Analysis of basic information about the dataset.
 2. Change data types for more memory efficiency and data integrity.
 3. Removal of duplicates.
 4. Basic viz of features.
@@ -59,11 +59,20 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 **What is Multinomial Naive Bayes and why using it?**
 
-The ***Multinomial Naive Bayes (MNB) model*** is a variant of the Naive Bayes algorithm that is particularly suited for classification tasks where the features are counts or frequencies of words (or other types of features) in text data. It is called "multinomial" because it assumes that the features (typically word counts) follow a multinomial distribution.
+The ***Multinomial Naive Bayes (MNB) model*** is a variant of the Naive Bayes algorithm that is particularly suited for classification tasks where the features are counts or frequencies of words in text data. It is called "multinomial" because it assumes that the features (typically word counts) follow a multinomial distribution like ours where the dependen variables are represented by the frequency of each word in the text data.
 
 Naive Bayes classifiers are based on Bayes' Theorem and assume that the features (in this case, the words in a text document) are conditionally independent given the class. While this assumption is often unrealistic in practice, it simplifies the computation, making Naive Bayes a very efficient algorithm.
 
 The Multinomial Naive Bayes is particularly effective for problems where the features are word counts or frequency counts of events, such as in text classification problems.
+
+And why Multinomial?
+
+Well, since I'm going to use a non-binary BOW and this is a first approach I will leave other Naive Bayes algorithms for later. What could I use? 
+
+- Binary BOW + Bernoulli Naive Bayes, since it's suitable for working in the presence (1) or absence (0) or a word.
+
+- If my dataset is very imbalaced I can use BOW + Complement Naive Bayes.
+
 
 
 

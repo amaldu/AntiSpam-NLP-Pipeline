@@ -28,16 +28,16 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 4. Basic viz of features.
 
 ### Cleaning: same notebook as before + [Special replacements analysis](https://github.com/AMaldu/spam_detector/blob/main/notebooks/special_chars_analysis.ipynb)
-    1. Replacement of special replacements  
-    2. Replacement of emojis
-    3. Conversion to lowecase
-    4. Removal of HTML tags
-    5. Removal of URLs
-    6. Replacement of numbers with "number"
-    7. Replacement of e-mail addresses with "emailaddr"
-    8. Removal of punctutation
-    9. Removal of Non-Alphabetic Characters
-    10. Collapse of multiple whitespaces into single whitespace
+1. Replacement of special replacements  
+2. Replacement of emojis
+3. Conversion to lowecase
+4. Removal of HTML tags
+5. Removal of URLs
+6. Replacement of numbers with "number"
+7. Replacement of e-mail addresses with "emailaddr"
+8. Removal of punctutation
+9. Removal of Non-Alphabetic Characters
+10. Collapse of multiple whitespaces into single whitespace
 
 
 ### Base-model: BOW + Multinomial Naive Bayes 
@@ -46,16 +46,16 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 BOW is a text representation technique that transforms text data into a set of features. Here's how it works:
 
-    1. Tokenization: The text is split into individual words or tokens
-    2. Vocabulary Creation: All unique words (or tokens) from the entire text corpus are collected to form a vocabulary
-    3. Vector Representation: Each document is represented as a vector where each element corresponds to the presence or frequency of a word from the vocabulary.
+1. Tokenization: The text is split into individual words or tokens
+2. Vocabulary Creation: All unique words (or tokens) from the entire text corpus are collected to form a vocabulary
+3. Vector Representation: Each document is represented as a vector where each element corresponds to the presence or frequency of a word from the vocabulary.
 
 BOW is an easy approach to the ham-spam problem that I considered useful for the following reasons:
 
-    1. BOW is simple to implement and understand
-    2. The frequency of certain words can be indicative of spam or ham
-    3. The semantic meaning of the e-mails is not that important because we are focusing on capturing keywords or phrases like  "free", "money", "offer", "limited time", "winner" that can lead us to a good classification.
-    3. This is a vectorizer for the purpose of creating a base model. Let's keep it simple :)
+1. BOW is simple to implement and understand
+2. The frequency of certain words can be indicative of spam or ham
+3. The semantic meaning of the e-mails is not that important because we are focusing on capturing keywords or phrases like  "free", "money", "offer", "limited time", "winner" that can lead us to a good classification.
+3. This is a vectorizer for the purpose of creating a base model. Let's keep it simple :)
 
 **Why Multinomial Naive Bayes?**
 

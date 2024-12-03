@@ -7,9 +7,9 @@
 1. [Objective](#Objective)
 2. [About the data](#About-the-data)
 3. [Methods used](#Methods-used)
-    - [EDA](##EDA)
-    - [Cleaning](##Cleaning)
-    - [Base Model](##Base-Model)
+    - [EDA](#EDA)
+    - [Cleaning](#Cleaning)
+    - [Base Model](#Base-Model)
 4. [Metrics used](#Metrics-used)
 5. [Experimentation](#Experimentation)
 6. [Technologies](#Technologies)
@@ -44,7 +44,7 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 4. Basic viz of features.
 
 ## Cleaning
-Same notebook as before + [Special Replacements Analysis notebook](https://github.com/AMaldu/spam_detector/blob/main/notebooks/special_chars_analysis.ipynb)
+Same notebook as EDA + [Special Replacements Analysis notebook](https://github.com/AMaldu/spam_detector/blob/main/notebooks/special_chars_analysis.ipynb)
 1. Replacement of special replacements  
 2. Replacement of emojis
 3. Conversion to lowecase

@@ -1,9 +1,19 @@
 # Spam Message Detector Model 
 
+
+
+## Index of contents
+
+1. [Objective](##Objective)
+2. [Instalación](#instalación)
+3. [Uso](#uso)
+4. [Contribución](#contribución)
+5. [Licencia](#licencia)
+
+
 ## Objective
 
 This project presents a step-by-step guide to building an efficient e-mail spam classification model.
-
 By the end of this project, you'll have a powerful tool to help you filter out unwanted e-mails and ensure that your inbox is not filled with unnecessary content.
 
 ![spam classification](images/intro.png)

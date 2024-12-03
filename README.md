@@ -2,18 +2,16 @@
 
 
 
-## Index of contents
+# Index of contents
 
-1. [Objective](##Objective)
-2. [About the data](##About-the-data)
-3. [Methods used](##Methods-used)
-    - [EDA](###EDA)
-    - [Cleaning](###Cleaning)
+1. [Objective](#Objective)
+2. [About the data](#About-the-data)
+3. [Methods used](#Methods-used)
 4. [Contribución](#contribución)
 5. [Licencia](#licencia)
 
 
-## Objective
+# Objective
 
 This project presents a step-by-step guide to building an efficient e-mail spam classification model.
 By the end of this project, you'll have a powerful tool to help you filter out unwanted e-mails and ensure that your inbox is not filled with unnecessary content.
@@ -21,7 +19,7 @@ By the end of this project, you'll have a powerful tool to help you filter out u
 ![spam classification](images/intro.png)
 
 
-## About the data
+# About the data
 The dataset used for this project can be found [here](https://www.kaggle.com/datasets/mfaisalqureshi/spam-email) which consists of 5,574 messages with the following columns: 
 
 1. ***Category*** column with the following labels:

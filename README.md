@@ -93,18 +93,43 @@ docker run -p 5000:5000 -v $(pwd)/mlflow_artifacts:/mlflow/artifacts mlflow
 
 ## Metrics used
 
-**Precision**: measures the accuracy of the positive predictions made by the model
+Our the dataset is very imbalanced with a 13.41% of SPAM so it's important to choose the right metrics for the evaluation of the model. Those metrics have to provide a clear vision of the model performance in the minority class.
 
-**Recall**: measures the ability of the model to detect all the instances of the positive class
+**Precision**
 
-**F1-score**: combines precision and recall and it's useful when there is an imbalance between the classes (our case)
+It measures the proportion of true positives (spam correctly classified) among all instances predicted as spam. A good precision for the spam class indicates that most e-mails classified as spam by the model are actually spam.
 
+**Recall**
+
+It measures the model's ability to capture all true positives (all spam instances). A good recall for the spam class indicates that the model is identifying most of the spam emails.
+
+**F1-score**
+
+It is the harmonic mean of precision and recall, meaning it considers both the model's ability to correctly identify positives (spam) and avoid false positives (ham classified as spam). We have to make sure the F1-score is high.
+
+**Confusion Matrix**
+
+The confusion matrix shows the number of true positives, false positives, true negatives, and false negatives.
 
 <p align="center">
   <img src="images/Confusion-matrix-Precision-Recall-Accuracy-and-F1-score.jpg" width="500"/>
 </p>
 
-**ROC-AUC Curve**: the ROC curve plots the true positive rate (recall) against the false positive rate (1 - specificity) at different classification thresholds. AUC (Area Under the Curve) measures the overall ability of the model to distinguish between classes.
+
+**ROC-AUC**
+
+AUC measures the model’s ability to distinguish between classes. A ROC curve compares the true positive rate (recall) with the false positive rate, providing insight into how the model performs as decision thresholds change. In imbalanced datasets, a higher AUC means the model is better at separating the classes, even if the minority class is much less frequent. The AUC should be greater than 0.7 to be considered good.
+
+**Precision-Recall AUC**
+
+In imbalanced datasets like ours, the Precision-Recall curve is more informative than the ROC curve. This is because the ROC curve can be overly optimistic in imbalanced datasets, while the Precision-Recall curve is more useful in evaluating performance on the minority class (spam). The Precision-Recall AUC will tell us how well the model balances precision and recall for the minority class (spam).
+
+**Balanced Accuracy**
+
+Balanced accuracy is the average of the recall for both classes. It is useful in imbalanced settings because it gives equal weight to both classes. A balanced accuracy above 0.5 is considered good however, the closer it is to 1, the better the model handles both classes.
+
+
+**ROC-AUC Curve**: the ROC curve plots the true positive rate (recall) against the false positive rate (1 - specificity) at different classification thresholds. AUC (Area Under the Curve) measures the overall ability of the model to distinguish between classes. It's important to minimize false negatives for spam.
 
 #### Why not other metrics?
 

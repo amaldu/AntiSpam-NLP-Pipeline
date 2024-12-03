@@ -57,14 +57,14 @@ A high precision value for the spam class indicates that most e-mails classified
 **Recall** Out of all the real positives, how many positives we got right? 
 
 <p align="center">
-  <img src="../../images/recall.jpg" width="300"/>
+  <img src="../../images/recall.jpg" width="200"/>
 </p>
 A good recall for the spam class indicates that the model is identifying most of the spam emails.
 
 **F1-score** Harmonic mean of precision and recall.
 
 <p align="center">
-  <img src="../../images/f1-score.jpg" width="400"/>
+  <img src="../../images/f1-score.jpg" width="200"/>
 </p>
 
 We have to make sure the F1-score is high.

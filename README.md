@@ -22,10 +22,10 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 ## Methods Used
 
 ### [EDA](https://github.com/AMaldu/spam_detector/blob/main/notebooks/preprocessing.ipynb)
-    1. Viz of basic information about the dataset.
-    2. Change data types for more memory efficiency and data integrity.
-    3. Removal of duplicates.
-    4. Basic viz of features.
+1. Viz of basic information about the dataset.
+2. Change data types for more memory efficiency and data integrity.
+3. Removal of duplicates.
+4. Basic viz of features.
 
 ### Cleaning: same notebook as before + [Special replacements analysis](https://github.com/AMaldu/spam_detector/blob/main/notebooks/special_chars_analysis.ipynb)
     1. Replacement of special replacements  
@@ -47,9 +47,7 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 BOW is a text representation technique that transforms text data into a set of features. Here's how it works:
 
     1. Tokenization: The text is split into individual words or tokens
-
     2. Vocabulary Creation: All unique words (or tokens) from the entire text corpus are collected to form a vocabulary
-
     3. Vector Representation: Each document is represented as a vector where each element corresponds to the presence or frequency of a word from the vocabulary.
 
 BOW is an easy approach to the ham-spam problem that I considered useful for the following reasons:
@@ -58,10 +56,9 @@ BOW is an easy approach to the ham-spam problem that I considered useful for the
     2. The frequency of certain words can be indicative of spam or ham
     3. The semantic meaning of the e-mails is not that important because we are focusing on capturing keywords or phrases like  "free", "money", "offer", "limited time", "winner" that can lead us to a good classification.
     3. This is a vectorizer for the purpose of creating a base model. Let's keep it simple :)
-        
-
 
 **Why Multinomial Naive Bayes?**
+
 The Multinomial Naive Bayes (MNB) model is a variant of the Naive Bayes algorithm that is particularly suited for classification tasks where the features are counts or frequencies of words (or other types of features) in text data. It is called "multinomial" because it assumes that the features (typically word counts) follow a multinomial distribution.
 
 Naive Bayes classifiers are based on Bayes' Theorem and assume that the features (in this case, the words in a text document) are conditionally independent given the class. While this assumption is often unrealistic in practice, it simplifies the computation, making Naive Bayes a very efficient algorithm.

@@ -27,7 +27,13 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
     3. Lower every letter
     3. Delete extra whitespaces
 
-2. Naive Bayes as base model.
+2. Base model: Multinomial Naive Bayes 
+
+The Multinomial Naive Bayes (MNB) model is a variant of the Naive Bayes algorithm that is particularly suited for classification tasks where the features are counts or frequencies of words (or other types of features) in text data. It is called "multinomial" because it assumes that the features (typically word counts) follow a multinomial distribution.
+
+Naive Bayes classifiers are based on Bayes' Theorem and assume that the features (in this case, the words in a text document) are conditionally independent given the class. While this assumption is often unrealistic in practice, it simplifies the computation, making Naive Bayes a very efficient algorithm.
+
+The Multinomial Naive Bayes is particularly effective for problems where the features are word counts or frequency counts of events, such as in text classification problems.
 
 
 
@@ -64,13 +70,14 @@ docker run -p 5000:5000 -v $(pwd)/mlflow_artifacts:/mlflow/artifacts mlflow
 
 #### Why not other metrics?
 
-**Accuracy**: measures the proportion of correct predictions (TPs & TNs) over all predictions. In an imbalanced dataset like ours where one class dominates, a model can achieve high accuracy by mostly predicting the majority class. However, this doesn't necessarily mean the model is performing well.
+**Accuracy**: measures the proportion of correct predictions (TPs & TNs) over all predictions. In an imbalanced dataset like ours where one class dominates (ham), a model can achieve high accuracy by mostly predicting the majority class. However, this doesn't necessarily mean the model is performing well.
 
 Choosing precision, recall and f1-score is better because they focus on the model's performance of the minority class too.
 
 ## Experimentation: 
 
 1. Base model BOW + Multinomial Naive Bayes
+
 
 Classification Report (Test):
                  

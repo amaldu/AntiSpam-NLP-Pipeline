@@ -129,11 +129,15 @@ In imbalanced datasets like ours, the Precision-Recall curve is more informative
 Balanced accuracy is the average of the recall for both classes. It is useful in imbalanced settings because it gives equal weight to both classes. A balanced accuracy above 0.5 is considered good however, the closer it is to 1, the better the model handles both classes.
 
 
-**ROC-AUC Curve**: the ROC curve plots the true positive rate (recall) against the false positive rate (1 - specificity) at different classification thresholds. AUC (Area Under the Curve) measures the overall ability of the model to distinguish between classes. It's important to minimize false negatives for spam.
+**ROC-AUC Curve**
+
+The ROC curve plots the true positive rate (recall) against the false positive rate (1 - specificity) at different classification thresholds. AUC (Area Under the Curve) measures the overall ability of the model to distinguish between classes. It's important to minimize false negatives for spam.
 
 #### Why not other metrics?
 
-**Accuracy**: measures the proportion of correct predictions (TPs & TNs) over all predictions. In an imbalanced dataset like ours where one class dominates (ham), a model can achieve high accuracy by mostly predicting the majority class. However, this doesn't necessarily mean the model is performing well.
+**Accuracy**
+
+It measures the proportion of correct predictions (TPs & TNs) over all predictions. In an imbalanced dataset like ours where one class dominates (ham), a model can achieve high accuracy by mostly predicting the majority class. However, this doesn't necessarily mean the model is performing well.
 
 Choosing precision, recall and f1-score is better because they focus on the model's performance of the minority class too.
 

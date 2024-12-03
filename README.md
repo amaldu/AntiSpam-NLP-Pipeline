@@ -44,13 +44,13 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 **What is BOW and why using it?**
 
-BOW is a text representation technique that transforms text data into a set of features. Here's how it works:
+***BOW*** is a text representation technique that transforms text data into a set of features. Here's how it works:
 
 1. Tokenization: The text is split into individual words or tokens
 2. Vocabulary Creation: All unique words (or tokens) from the entire text corpus are collected to form a vocabulary
 3. Vector Representation: Each document is represented as a vector where each element corresponds to the presence or frequency of a word from the vocabulary.
 
-BOW is an easy approach to the ham-spam problem that I considered useful for the following reasons:
+***BOW*** is an easy approach to the ham-spam problem that I considered useful for the following reasons:
 
 1. BOW is simple to implement and understand
 2. The frequency of certain words can be indicative of spam or ham
@@ -59,7 +59,7 @@ BOW is an easy approach to the ham-spam problem that I considered useful for the
 
 **What is Multinomial Naive Bayes and why using it?**
 
-The Multinomial Naive Bayes (MNB) model is a variant of the Naive Bayes algorithm that is particularly suited for classification tasks where the features are counts or frequencies of words (or other types of features) in text data. It is called "multinomial" because it assumes that the features (typically word counts) follow a multinomial distribution.
+The ***Multinomial Naive Bayes (MNB) model*** is a variant of the Naive Bayes algorithm that is particularly suited for classification tasks where the features are counts or frequencies of words (or other types of features) in text data. It is called "multinomial" because it assumes that the features (typically word counts) follow a multinomial distribution.
 
 Naive Bayes classifiers are based on Bayes' Theorem and assume that the features (in this case, the words in a text document) are conditionally independent given the class. While this assumption is often unrealistic in practice, it simplifies the computation, making Naive Bayes a very efficient algorithm.
 

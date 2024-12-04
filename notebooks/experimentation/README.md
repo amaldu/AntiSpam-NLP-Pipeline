@@ -11,7 +11,7 @@ Index
 3. [Methods used](#Methods-used)
 
 # Base-model BOW + Multinomial Naive Bayes 
-[Notebook](https://github.com/AMaldu/spam_detector/blob/main/notebooks/experimentation/base_model_bow_MNB.ipynb)
+You can find the notebook [here](https://github.com/AMaldu/spam_detector/blob/main/notebooks/experimentation/base_model_bow_MNB.ipynb)
 
 
 # Context

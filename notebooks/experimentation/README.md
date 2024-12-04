@@ -1,30 +1,52 @@
 # Experimentation notebooks
 
-Here you can find all the theory and explanation about the experimentation part of this project. 
+Here you can find all the theory and explanations behind the experimentation part of this project. 
 
 Index
-
-1. [Base-model BOW + Multinomial Naive Bayes](#Base-model-BOW-+-Multinomial-Naive-Bayes)
+1. [Context](#Context) 
+2. [Base-model BOW + Multinomial Naive Bayes](#Base-model-BOW-+-Multinomial-Naive-Bayes)
+    - [BOW](#Bag-of-Words-as-Vectorizer) (theory)  🚧
+    - [Multinomial Naive Bayes](#Multinomial-Naive-Bayes) (theory)  🚧
     - [Metrics used](#Metrics-used)
 3. [Methods used](#Methods-used)
 
 # Base-model BOW + Multinomial Naive Bayes 
 [Notebook](https://github.com/AMaldu/spam_detector/blob/main/notebooks/experimentation/base_model_bow_MNB.ipynb)
 
-**Bag of Words as Vectorizer**
 
-***What is BOW?*** 
+# Context
+
+So let's dive in the logic behind a spam classifier for a bit. 
+
+In the context of a binary classification problem like spam detection, the False Positives (FP) and False Negatives (FN) are crucial concepts for understanding the performance of your model. We have two tricky situations:
+
+Situation A: a HAM email, like an important work-related message, is wrongly flagged as spam. This can be problematic because they cause legitimate messages to be missed. 
+
+Situation B: a SPAM email is incorrectly categorized as legitimate, meaning it reaches the user's inbox. This can lead to users receiving unwanted or even harmful emails, such as phishing attempts, which can damage trust or cause security issues.
+
+Trade-off between FP and FN: in spam detection, there's often a trade-off between false positives and false negatives. A model that minimizes false positives might allow more false negatives, and vice versa. It's important to balance these to fit the needs of the specific application.
+
+
+# Base-model BOW + Multinomial Naive Bayes
+
+Most machine learning algorithms require numerical input so a vectorizer is needed but which type?
+
+## Bag of Words as Vectorizer
+
+**What is BOW?**
 Bow is a technique that transforms text data into a set of tokens to feed the model. Here's how it works:
 
 1. Tokenization: The text is split into individual words or tokens
 2. Vocabulary Creation: All unique words (or tokens) from the entire text corpus are collected to form a vocabulary
 3. Vector Representation: Each document is represented as a vector where each element corresponds to the presence or frequency of a word from the vocabulary
 
-***Why BOW?*** 
+**Why BOW?** 
 
 1. BOW is simple to implement and understand
-2. The semantic meaning of the e-mails is not that important because we are focusing on capturing keywords or phrases like  "free", "money", "offer", "limited time", "winner" and their frequencies can be indicative of spam or ham.
+2. The semantic meaning of the e-mails is not that important because in this case we want to capture keywords or phrases like  "free", "money", "offer", "limited time", "winner" and their frequencies can be indicative of spam or ham
 3. This is a vectorizer for the purpose of creating a base model. Let's keep it simple :)
+
+## Multinomial Naive Bayes
 
 **What is Multinomial Naive Bayes?**
 
@@ -34,17 +56,20 @@ Naive Bayes classifiers are based on Bayes' Theorem and assume that the features
 
 The Multinomial Naive Bayes is particularly effective for problems where the features are word counts or frequency counts of events, such as in text classification problems.
 
-**And why Multinomial?**
+**And why Multinomial Naive Bayes?**
 
-The dataset is going to be processed by a non-binary BOW (so we will get word frequencies) and this is a first approach I will leave other Naive Bayes algorithms for later. What could I use in the future? 
+Naive Bayes is a popular algorithm due to its simplicity, efficiency, and effectiveness. It is often used as a baseline classifier for comparison with other more complex algorithms. This model is a good choice for problems where the features of the data are relatively independent and where the training data is limited. The dataset is going to be processed by a non-binary BOW (so we will get word frequencies) and this is a first approach I will leave other Naive Bayes algorithms for future iterations. 
+
+
+<!-- What could I use in the future? 
 
 - Binary BOW + Bernoulli Naive Bayes, since it's suitable for working in the presence (1) or absence (0) or a word.
 
-- Since my dataset is very imbalaced I can use BOW + Complement Naive Bayes that focuses more on the minority class.
+- Since my dataset is very imbalaced I can use BOW + Complement Naive Bayes that focuses more on the minority class. -->
 
 ## Metrics used
 
-Our the dataset is very imbalanced with a 13.41% of SPAM so our metrics have to provide a clear vision of the model performance in the minority class.
+In this case we want to focus on the performance of the model when classifying SPAM messages and what we want to avoid is the True Positives (HAM classified as SPAM) the dataset is very imbalanced with a 13.41% of SPAM so our metrics have to provide a clear vision of the model performance in the minority class.
 
 **Precision** Out of all predicted positives, how many positives we got right?
 
@@ -54,7 +79,7 @@ Our the dataset is very imbalanced with a 13.41% of SPAM so our metrics have to 
 
 A high precision value for the spam class indicates that most e-mails classified as spam by the model are actually spam.
 
-**Recall** Out of all the real positives, how many positives we got right? 
+**Recall/Sensitivity/TPR** Out of all the real positives, how many positives we got right? 
 
 <p align="center">
   <img src="../../images/recall.jpg" width="200"/>
@@ -88,10 +113,11 @@ Balanced accuracy is the average of the recall for both classes. Great for imbal
 
 **Weighted-averaged Precision/Recall/F1**
 
-Useful when focusing on the minority-class metrics
-
+These metrics compute a weighted average of the precision, recall, or F1-score. They are useful because they consider the weights of true values in each class. We should be careful when our dataset is extremely imbalanced (1%-99%) but this is not our case. 
 
 **Why not other metrics?**
+
+Some of these metrics can be a good support for the previous ones. The only thing to keep in mind is that their results must be taken with a grain of salt.
 
 **Accuracy**
 
@@ -107,9 +133,8 @@ Since we have a very imbalanced dataset on the positive class, when creating the
 
 **Macro-averaged Precision/Recall/F1**
 
-They calculate the average of the metrix for each class without considering the size of the class leading to confusion.
+They calculate the average of the metrics considering each class but giving them the same weight leading to confusion again
 
 
-Choosing precision, recall and f1-score is better because they focus on the model's performance of the minority class too.
 
 

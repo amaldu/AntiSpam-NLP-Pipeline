@@ -98,7 +98,7 @@ A good recall for the spam class indicates that the model is identifying most of
 I will use F0.5-score variant since we consider that the false positives are more important than the false negatives. 
 
 <p align="center">
-  <img src="../../images/f05-score.jpeg" width="200"/>
+  <img src="../../images/f05-score.jpeg" width="250"/>
 </p>
 
 **Confusion Matrix** shows the number of true positives, false positives, true negatives, and false negatives.

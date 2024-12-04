@@ -74,7 +74,7 @@ We have to make sure the F1-score is high.
 The confusion matrix shows the number of true positives, false positives, true negatives, and false negatives.
 
 <p align="center">
-  <img src="../../images/confusion-matrix.jpg" width="200"/>
+  <img src="../../images/confusion-matrix.jpg" width="400"/>
 </p>
 
 

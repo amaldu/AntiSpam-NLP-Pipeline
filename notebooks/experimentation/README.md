@@ -115,7 +115,7 @@ Balanced accuracy is the average of the recall for both classes. Great for imbal
 
 These metrics compute a weighted average of the precision, recall, or F1-score. They are useful because they consider the weights of true values in each class. We should be careful when our dataset is extremely imbalanced (1%-99%) but this is not our case. 
 
-**Why not other metrics?**
+### Why not other metrics?
 
 Some of these metrics can be a good support for the previous ones. The only thing to keep in mind is that their results must be taken with a grain of salt.
 

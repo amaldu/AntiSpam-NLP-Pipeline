@@ -5,9 +5,10 @@ Here you can find all the theory and explanations behind the experimentation par
 Index
 1. [Context](#Context) 
 2. [Base-model BOW + Multinomial Naive Bayes](#Base-model-BOW-+-Multinomial-Naive-Bayes)
-    - [BOW](#Bag-of-Words-as-Vectorizer) (theory)  🚧
-    - [Multinomial Naive Bayes](#Multinomial-Naive-Bayes) (theory)  🚧
-    - [Metrics used](#Metrics-used)
+    - [BOW](#Bag-of-Words-as-Vectorizer) (theory)  
+    - [Multinomial Naive Bayes](#Multinomial-Naive-Bayes) (theory)  
+    - [Metrics used](#Metrics-used) (theory)
+    - [Results](#Results) 🚧
 3. [Methods used](#Methods-used)
 
 # Context
@@ -20,7 +21,7 @@ Situation A: a HAM email, like an important work-related message, is wrongly fla
 
 Situation B: a SPAM email is incorrectly categorized as legitimate, meaning it reaches the user's inbox. This can lead to users receiving unwanted or even harmful emails, such as phishing attempts, which can damage trust or cause security issues.
 
-Trade-off between FP and FN: in spam detection, there's often a trade-off between false positives and false negatives. A model that minimizes false positives might allow more false negatives, and vice versa. It's important to balance these to fit the needs of the specific application.
+Trade-off between FP and FN: in spam detection, there's often a trade-off between false positives and false negatives. A model that minimizes false positives might allow more false negatives, and vice versa. In our case I decided that sending HAM e-mails to the SPAM inbox would be more problematic than the other way around. That's the reason behind using F0.5-score 
 
 
 # Base-model BOW + Multinomial Naive Bayes
@@ -87,13 +88,18 @@ A high precision value for the spam class indicates that most e-mails classified
 </p>
 A good recall for the spam class indicates that the model is identifying most of the spam emails.
 
+
 **F1-score** Harmonic mean of precision and recall.
 
 <p align="center">
   <img src="../../images/f1-score.jpg" width="200"/>
 </p>
 
-We have to make sure the F1-score is high.
+I will use F0.5-score variant since we consider that the false positives are more important than the false negatives. 
+
+<p align="center">
+  <img src="../../images/f05-score.jpg" width="200"/>
+</p>
 
 **Confusion Matrix** shows the number of true positives, false positives, true negatives, and false negatives.
 
@@ -130,4 +136,5 @@ They calculate the average of the metrics considering each class but giving them
 
 
 
+## Results
 

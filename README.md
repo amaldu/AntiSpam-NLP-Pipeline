@@ -60,7 +60,7 @@ Same notebook as EDA + [Special Replacements Analysis notebook](https://github.c
 ## 
 
 # Experimentation
-
+This section only contains results. If you want to take a look at the Decision-Making Process please take a look at the Experimentation [README file](https://github.com/AMaldu/spam_detector/blob/main/notebooks/experimentation/README.md) 
 1. Base model BOW + Multinomial Naive Bayes
 
 

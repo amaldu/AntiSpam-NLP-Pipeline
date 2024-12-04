@@ -91,7 +91,6 @@ Balanced accuracy is the average of the recall for both classes. Great for imbal
 Useful when focusing on the minority-class metrics
 
 
-
 **Why not other metrics?**
 
 **Accuracy**

@@ -10,10 +10,6 @@ Index
     - [Metrics used](#Metrics-used)
 3. [Methods used](#Methods-used)
 
-# Base-model BOW + Multinomial Naive Bayes 
-You can find the notebook [here](https://github.com/AMaldu/spam_detector/blob/main/notebooks/experimentation/base_model_bow_MNB.ipynb)
-
-
 # Context
 
 So let's dive in the logic behind a spam classifier for a bit. 
@@ -29,11 +25,16 @@ Trade-off between FP and FN: in spam detection, there's often a trade-off betwee
 
 # Base-model BOW + Multinomial Naive Bayes
 
+You can find the notebook [here](https://github.com/AMaldu/spam_detector/blob/main/notebooks/experimentation/base_model_bow_MNB.ipynb)
+
+
+
 Most machine learning algorithms require numerical input so a vectorizer is needed but which type?
 
 ## Bag of Words as Vectorizer
 
 **What is BOW?**
+
 Bow is a technique that transforms text data into a set of tokens to feed the model. Here's how it works:
 
 1. Tokenization: The text is split into individual words or tokens
@@ -94,26 +95,18 @@ A good recall for the spam class indicates that the model is identifying most of
 
 We have to make sure the F1-score is high.
 
-**Confusion Matrix**
-
-The confusion matrix shows the number of true positives, false positives, true negatives, and false negatives.
+**Confusion Matrix** shows the number of true positives, false positives, true negatives, and false negatives.
 
 <p align="center">
   <img src="../../images/confusion-matrix.jpg" width="400"/>
 </p>
 
 
-**Precision-Recall AUC**
+**Precision-Recall AUC** plots Precision-Recall plots that avoid the TNs rather focus on the performance of the minority class.
 
-It plots Precision-Recall plots that avoid the TNs rather focus on the performance of the minority class.
+**Balanced Accuracy** is the average of the recall for both classes. Great for imbalanced datasets because it gives equal weight to both classes.
 
-**Balanced Accuracy**
-
-Balanced accuracy is the average of the recall for both classes. Great for imbalanced datasets because it gives equal weight to both classes.
-
-**Weighted-averaged Precision/Recall/F1**
-
-These metrics compute a weighted average of the precision, recall, or F1-score. They are useful because they consider the weights of true values in each class. We should be careful when our dataset is extremely imbalanced (1%-99%) but this is not our case. 
+**Weighted-averaged Precision/Recall/F1** compute a weighted average of the precision, recall, or F1-score. They are useful because they consider the weights of true values in each class. We should be careful when our dataset is extremely imbalanced (1%-99%) but this is not our case. 
 
 ### Why not other metrics?
 

@@ -9,9 +9,7 @@
 3. [Methods used](#Methods-used) Theory behind Decision-Making Process 🚧
     - [EDA](#EDA)
     - [Cleaning](#Cleaning)
-    - [Base Model](#Base-Model) 🚧
-      - [Metrics used](#Metrics-used) Theory behind Decision-Making Process 🚧
-5. [Experimentation](#Experimentation) 🚧
+    - [Experimentation](#Experimentation) Theory behind Decision-Making Process 🚧
 6. [Technologies](#Technologies) 🚧
 7. [Installation](#Installation) 🚧
 
@@ -19,10 +17,11 @@
 # Objective
 
 This project presents a step-by-step guide to building an efficient e-mail spam classification model.
-By the end of this project, you'll have a powerful tool to help you filter out unwanted e-mails and ensure that your inbox is not filled with unnecessary content.
+
 
 ![spam classification](images/intro.png)
 
+By the end of this project, you'll have a powerful tool to help you filter out unwanted e-mails and ensure that your inbox is not filled with unnecessary content.
 
 # About the data
 The dataset used for this project can be found [here](https://www.kaggle.com/datasets/mfaisalqureshi/spam-email) which consists of 5,574 messages with the following columns: 

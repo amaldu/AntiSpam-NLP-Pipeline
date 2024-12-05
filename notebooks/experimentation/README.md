@@ -9,6 +9,7 @@ Index
     - [Multinomial Naive Bayes](#Multinomial-Naive-Bayes) (theory)  
     - [Metrics used](#Metrics-used) (theory)
     - [Results](#Results) 🚧
+2. [SMOTE]
 3. [Methods used](#Methods-used)
 
 # Context
@@ -98,7 +99,7 @@ A good recall for the spam class indicates that the model is identifying most of
 I will use F0.5-score variant since we consider that the false positives are more important than the false negatives. 
 
 <p align="center">
-  <img src="../../images/f05-score.jpeg" width="250"/>
+  <img src="../../images/f05-score.jpeg" width="300"/>
 </p>
 
 **Confusion Matrix** shows the number of true positives, false positives, true negatives, and false negatives.
@@ -111,6 +112,11 @@ I will use F0.5-score variant since we consider that the false positives are mor
 **Precision-Recall AUC** plots Precision-Recall plots that avoid the TNs rather focus on the performance of the minority class.
 
 **Balanced Accuracy** is the average of the recall for both classes. Great for imbalanced datasets because it gives equal weight to both classes.
+
+<p align="center">
+  <img src="../../images/balanced-accuracy.png" width="200"/>
+</p>
+
 
 **Weighted-averaged Precision/Recall/F1** compute a weighted average of the precision, recall, or F1-score. They are useful because they consider the weights of true values in each class. We should be careful when our dataset is extremely imbalanced (1%-99%) but this is not our case. 
 
@@ -137,4 +143,50 @@ They calculate the average of the metrics considering each class but giving them
 
 
 ## Results
+
+# Oversampling techniques
+
+## Back translation
+In this method, we translate the text data to some language and then translate it back to the original language. This can help to generate textual data with different words while preserving the context of the text data. 
+
+Language translations APIs like google translate, Bing, Yandex are used to perform the translation. For example, given the sentence:
+
+https://www.kaggle.com/code/miklgr500/how-to-use-translators-for-comments-translation
+
+## Synonym Replacement
+
+Randomly choose n words from the sentence that are not stop words. Replace each of these words with one of its synonyms chosen at random. The method randomly selects n words (say two), the words article and techniques, and replaces them with write-up and methods respectively.
+
+## 
+    Random Insertion
+
+Find a random synonym of a random word in the sentence that is not a stop word. Insert that synonym into a random position in the sentence. Do this n times. 
+
+For example, given the sentence:
+
+This article will focus on summarizing data augmentation techniques in NLP.
+
+The method randomly selects n words (say two), the words article and techniques find the synonyms as write-up and methods respectively. Then these synonyms are inserted at a random position in the sentence.
+
+
+github with techniques 
+
+https://github.com/jasonwei20/eda_nlp
+
+## Library for data augmentation techniques 
+https://github.com/makcedward/nlpaug
+
+From my experience, the most commonly used and effective technique is synonym replacement via word embeddings. 
+
+We replace n number words with its synonyms (word embeddings that are close to those words) to obtain a sentence with the same meaning but with different words. 
+
+While performing synonym replacement we can choose which pre-trained embedding we should use to find the synonyms for a given word. 
+
+With NLPaug we can choose non-contextual embeddings like:
+
+    Glove,
+    word2vec, 
+    etc, 
+
+
 

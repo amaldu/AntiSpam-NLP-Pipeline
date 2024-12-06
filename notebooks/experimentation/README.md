@@ -2,13 +2,15 @@
 
 Here you can find all the theory and explanations behind the experimentation part of this project. 
 
-Index
+# Index
 1. [Context](#Context) 
-2. [Base-model BOW + Multinomial Naive Bayes](#Base-model-BOW-+-Multinomial-Naive-Bayes)
+2. [Experiments](#Experiments)
+  1. [Base-model BOW + Multinomial Naive Bayes](#Base-model-BOW-+-Multinomial-Naive-Bayes)
     - [BOW](#Bag-of-Words-as-Vectorizer) (theory)  
     - [Multinomial Naive Bayes](#Multinomial-Naive-Bayes) (theory)  
     - [Metrics used](#Metrics-used) (theory)
     - [Results](#Results) 🚧
+  2. []
 2. [SMOTE]
 3. [Methods used](#Methods-used)
 
@@ -24,8 +26,9 @@ Situation B: a SPAM email is incorrectly categorized as legitimate, meaning it r
 
 Trade-off between FP and FN: in spam detection, there's often a trade-off between false positives and false negatives. A model that minimizes false positives might allow more false negatives, and vice versa. In our case I decided that sending HAM e-mails to the SPAM inbox would be more problematic than the other way around. That's the reason behind using F0.5-score 
 
+# Experiments
 
-# Base-model BOW + Multinomial Naive Bayes
+## Base-model BOW + Multinomial Naive Bayes
 
 You can find the notebook [here](https://github.com/AMaldu/spam_detector/blob/main/notebooks/experimentation/base_model_bow_MNB.ipynb)
 
@@ -33,7 +36,7 @@ You can find the notebook [here](https://github.com/AMaldu/spam_detector/blob/ma
 
 Most machine learning algorithms require numerical input so a vectorizer is needed but which type?
 
-## Bag of Words as Vectorizer
+### Bag of Words as Vectorizer
 
 **What is BOW?**
 
@@ -49,7 +52,7 @@ Bow is a technique that transforms text data into a set of tokens to feed the mo
 2. The semantic meaning of the e-mails is not that important because in this case we want to capture keywords or phrases like  "free", "money", "offer", "limited time", "winner" and their frequencies can be indicative of spam or ham
 3. This is a vectorizer for the purpose of creating a base model. Let's keep it simple :)
 
-## Multinomial Naive Bayes
+### Multinomial Naive Bayes
 
 **What is Multinomial Naive Bayes?**
 
@@ -70,7 +73,7 @@ Naive Bayes is a popular algorithm due to its simplicity, efficiency, and effect
 
 - Since my dataset is very imbalaced I can use BOW + Complement Naive Bayes that focuses more on the minority class. -->
 
-## Metrics used
+### Metrics used
 
 In this case we want to focus on the performance of the model when classifying SPAM messages and what we want to avoid is the True Positives (HAM classified as SPAM) the dataset is very imbalanced with a 13.41% of SPAM so our metrics have to provide a clear vision of the model performance in the minority class.
 
@@ -142,7 +145,9 @@ They calculate the average of the metrics considering each class but giving them
 
 
 
-## Results
+### Results
+
+
 
 # Oversampling techniques
 

@@ -2291,6 +2291,20 @@ pyside6 = ["pyside6"]
 test = ["flaky", "ipyparallel", "pre-commit", "pytest (>=7.0)", "pytest-asyncio (>=0.23.5)", "pytest-cov", "pytest-timeout"]
 
 [[package]]
+name = "ipynbname"
+version = "2024.1.0.0"
+description = "Simply returns either notebook filename or the full path to the notebook when run from Jupyter notebook in browser."
+optional = false
+python-versions = "<4,>=3.4"
+files = [
+    {file = "ipynbname-2024.1.0.0-py3-none-any.whl", hash = "sha256:cdd098cfe1986baa1d4ecb0b42f7a2b63646f25570f57163239beba73f26d65a"},
+    {file = "ipynbname-2024.1.0.0.tar.gz", hash = "sha256:1d3c69cdee8a97814f456a7204e9cc195b4bbb4b9e45cbe757796b162493f606"},
+]
+
+[package.dependencies]
+ipykernel = "*"
+
+[[package]]
 name = "ipython"
 version = "8.30.0"
 description = "IPython: Productive Interactive Computing"
@@ -4523,6 +4537,20 @@ files = [
 six = ">=1.5"
 
 [[package]]
+name = "python-dotenv"
+version = "1.0.1"
+description = "Read key-value pairs from a .env file and set them as environment variables"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "python-dotenv-1.0.1.tar.gz", hash = "sha256:e324ee90a023d808f1959c46bcbc04446a10ced277783dc6ee09987c37ec10ca"},
+    {file = "python_dotenv-1.0.1-py3-none-any.whl", hash = "sha256:f7b63ef50f1b690dddf550d03497b66d609393b40b564ed0d674909a68ebf16a"},
+]
+
+[package.extras]
+cli = ["click (>=5.0)"]
+
+[[package]]
 name = "python-json-logger"
 version = "2.0.7"
 description = "A python library adding a json log formatter"
@@ -6282,4 +6310,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "69dfefab0346480ff31a1647e7d287c9d9409872f5398b0c5bc987b9f342083f"
+content-hash = "292b1213360ec33814eb6b4d40da4226bbae9d04cef3c17a662974b8232dcbfb"

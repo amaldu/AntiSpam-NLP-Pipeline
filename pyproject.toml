@@ -18,6 +18,7 @@ scikit-learn = "^1.5.2"
 numpy = ">=1.18.5,<2.0"  
 python-dotenv = "^1.0.1"
 pyyaml = "^6.0.2"
+textattack = "^0.3.10"
 
 [tool.poetry.group.dev.dependencies]
 matplotlib = "^3.9.2"

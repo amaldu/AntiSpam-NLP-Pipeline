@@ -1,5 +1,5 @@
-notebooks/experimentation/artifacts_local
-notebooks/experimentation/backend.db
+artifacts/
+backend.db
 
 .env
 

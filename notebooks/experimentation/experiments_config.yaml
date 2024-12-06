@@ -1,7 +1,7 @@
 experiment_name: "spam-classifier"
 experiment_description: "This experiment contains mlruns for different approaches in the ml lifecycle of an e-mail spam detector classifier."
 experiment_tags:
-  project_name: "spam-classifier"
+  project_name: "NLP-text-classifier"
   project_stage: "testing"
   team: "ml-team"
   project_quarter: "Q4-2024"

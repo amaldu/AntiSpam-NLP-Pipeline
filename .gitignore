@@ -1,2 +1,7 @@
 notebooks/experimentation/artifacts_local
 notebooks/experimentation/backend.db
+
+.env
+
+venv/
+__pycache__/

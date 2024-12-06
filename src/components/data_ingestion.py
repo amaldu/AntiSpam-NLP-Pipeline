@@ -16,23 +16,23 @@ from nltk.stem.wordnet import WordNetLemmatizer
 
 import logging
 
-INPUT_FILE = "data/input_data.csv"  # Ruta al archivo CSV
-DB_FILE = "data/ingestion.db"       # Ruta al archivo de SQLite
-TABLE_NAME = "ingested_data"        # Nombre de la tabla
+INPUT_FILE = "data/input_data.csv" 
+DB_FILE = "data/ingestion.db"       
+TABLE_NAME = "ingested_data"      
 
 def read_data(file_path):
-    logging.info(f"Reading the data from {file_path}")
+    logging.info(f"Reading the dataset from {file_path}")
     try:
         train = pd.read_csv(file_path)
         test = pd.read_csv(file_path)
         val = pd.read_csv(file_path)
         return train, test, val
     except Exception as e:
-        logging.error(f"Error reading data: {e}")
+        logging.error(f"Error reading the data: {e}")
         raise
 
 def process_data(data):
-    logging.info(f"Procesando datos...")
+    logging.info(f"Processing data...")
     try:
 
 

@@ -1,5 +1,5 @@
-notebooks/experimentation/artifacts/*
-notebooks/experimentation/
+notebooks/experimentation/artifacts/
+notebooks/experimentation/backend.db
 
 .env
 

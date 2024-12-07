@@ -117,7 +117,7 @@ I will use F0.5-score variant since we consider that the false positives are mor
 **Balanced Accuracy** is the average of the recall for both classes. Great for imbalanced datasets because it gives equal weight to both classes.
 
 <p align="center">
-  <img src="../../images/balanced-accuracy.png" width=400"/>
+  <img src="../../images/balanced-accuracy.png" width=500"/>
 </p>
 
 

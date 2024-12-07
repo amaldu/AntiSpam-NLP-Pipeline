@@ -108,7 +108,7 @@ I will use F0.5-score variant since we consider that the false positives are mor
 **Confusion Matrix** shows the number of true positives, false positives, true negatives, and false negatives.
 
 <p align="center">
-  <img src="../../images/confusion-matrix.jpg" width="400"/>
+  <img src="../../images/confusion-matrix.jpg" width="500"/>
 </p>
 
 

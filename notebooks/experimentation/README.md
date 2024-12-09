@@ -121,7 +121,7 @@ I will use F0.5-score variant since we consider that the false positives are mor
 
 
 <p align="center">
-  <img src="../../images/precisionRecall.png" width="500"/>
+  <img src="../../images/precisionRecall.png" width="400"/>
 </p>
 
 **Balanced Accuracy** is the average of the recall for both classes. Great for imbalanced datasets because it gives equal weight to both classes.
@@ -145,12 +145,12 @@ In an imbalanced dataset like ours where one class dominates (ham), a model can 
 
 Similar to accuracy, the error rate (1 - Accuracy) also mislead because it ignores the imbalace 
 
-**ROC-AUC**
+**ROC-AUC plot**
 
 Since we have a very imbalanced dataset on the positive class, when creating the ROC-AUC plot, the FPR will be very small due to the huge amount of TNs that our model classifies. That will make the ROC curve look almost perfect (as if the model would be performing very good) but it's all a lie. It's better to use the Precision-Recall AUC plot.
 
 <p align="center">
-  <img src="../../images/roc-auc-curve.png" width=500"/>
+  <img src="../../images/roc-auc-curve.png" width=400"/>
 </p>
 
 

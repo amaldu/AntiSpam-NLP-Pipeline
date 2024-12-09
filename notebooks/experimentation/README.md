@@ -75,9 +75,14 @@ Naive Bayes is a popular algorithm due to its simplicity, efficiency, and effect
 
 ### Metrics used
 
-In this case we want to focus on the performance of the model when classifying SPAM messages and what we want to avoid is the True Positives (HAM classified as SPAM) the dataset is very imbalanced with a 13.41% of SPAM so our metrics have to provide a clear vision of the model performance in the minority class.
+Context: 
+- The dataset is imbalanced with a 13.41% of positive class (SPAM)
+- Avoiding False Positives more than important than avoiding False Negatives. Precision and f0.5-score are our favourite metrics.
 
-**Precision** Out of all predicted positives, how many positives we got right?
+Mow I'm going to explain the most common metrics for classification and why I will consider them or not.
+
+
+**Precision/Specificity/TNR** Out of all predicted positives, how many positives we got right?
 
 <p align="center">
   <img src="../../images/precision.png" width="200"/>
@@ -112,7 +117,12 @@ I will use F0.5-score variant since we consider that the false positives are mor
 </p>
 
 
-**Precision-Recall AUC** plots Precision-Recall plots that avoid the TNs rather focus on the performance of the minority class.
+**Precision-Recall AUC** plots Precision-Recall that avoid the TNs rather focus on the performance of the minority class.
+
+
+<p align="center">
+  <img src="../../images/precisionRecall.png" width="500"/>
+</p>
 
 **Balanced Accuracy** is the average of the recall for both classes. Great for imbalanced datasets because it gives equal weight to both classes.
 
@@ -143,10 +153,14 @@ Since we have a very imbalanced dataset on the positive class, when creating the
 
 They calculate the average of the metrics considering each class but giving them the same weight leading to confusion again
 
+Gain and Lift charts – These charts check the rank ordering of the probabilities.
+
+K-S or Kolmogorov-Smirnov chart – This chart measures the classification model’s performance. It is a measure of the degree of separation between negative and positive distribution.
 
 
 ### Results
 
+Check https://www.markovml.com/blog/baseline-models
 
 
 # Oversampling techniques

@@ -3,6 +3,8 @@ import os
 import random
 from random import shuffle
 random.seed(1)
+import pandas as pd
+
 
 
 def experiment_status(config_file='experiments_config.yaml'):
@@ -119,12 +121,20 @@ class TextAugmentation:
         random_idx = random.randint(0, len(new_words)-1)
         new_words.insert(random_idx, random_synonym)
 
-    def eda(self, sentence):
-        words = sentence.split(' ')
+    def eda(self, dataframe):
+        spam_rows = dataframe[dataframe['target'] == 1].shape[0]
+        ham_rows = dataframe[dataframe['target'] == 0].shape[0]
+        num_rows = 5
+        num_new_per_technique = int(num_rows/4)+1
+
+        sentences = dataframe['features'].tolist()
+        words = []
+        for sentence in sentences:
+            words.extend(sentence.split(' '))
+            
         words = [word for word in words if word != '']
         num_words = len(words)
         augmented_sentences = []
-        num_new_per_technique = int(self.num_aug / 4) + 1
 
         if self.alpha_sr > 0:
             n_sr = max(1, int(self.alpha_sr * num_words))
@@ -157,5 +167,21 @@ class TextAugmentation:
             keep_prob = self.num_aug / len(augmented_sentences)
             augmented_sentences = [s for s in augmented_sentences if random.uniform(0, 1) < keep_prob]
 
-        augmented_sentences.append(sentence)
+        augmented_sentences.append(augmented_sentences)
         return augmented_sentences
+    
+    
+    
+    
+    
+    
+
+    
+
+print("Directorio actual:", os.getcwd())
+
+train = pd.read_csv("data/gold/train.csv")
+
+text_aug = TextAugmentation(alpha_sr=0.2, alpha_ri=0.2, alpha_rs=0.2, p_rd=0.1, num_aug=30)
+
+augmented_sentences = text_aug.eda(train)

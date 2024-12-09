@@ -149,6 +149,11 @@ Similar to accuracy, the error rate (1 - Accuracy) also mislead because it ignor
 
 Since we have a very imbalanced dataset on the positive class, when creating the ROC-AUC plot, the FPR will be very small due to the huge amount of TNs that our model classifies. That will make the ROC curve look almost perfect (as if the model would be performing very good) but it's all a lie. It's better to use the Precision-Recall AUC plot.
 
+<p align="center">
+  <img src="../../images/roc-auc-curve.png" width=500"/>
+</p>
+
+
 **Macro-averaged Precision/Recall/F1**
 
 They calculate the average of the metrics considering each class but giving them the same weight leading to confusion again

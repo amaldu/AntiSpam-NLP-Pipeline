@@ -19,6 +19,7 @@ numpy = ">=1.18.5,<2.0"
 python-dotenv = "^1.0.1"
 pyyaml = "^6.0.2"
 textattack = "^0.3.10"
+joblib = "^1.4.2"
 
 [tool.poetry.group.dev.dependencies]
 matplotlib = "^3.9.2"
@@ -37,6 +38,7 @@ nbconvert = "^7.16.4"
 webencodings = "^0.5.1"
 notebook = "^7.3.1"
 ipynbname = "^2024.1.0.0"
+diskcache = "^5.6.3"
 
 
 

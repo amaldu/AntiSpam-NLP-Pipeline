@@ -4,6 +4,7 @@ import random
 from random import shuffle
 random.seed(1)
 import pandas as pd
+from itertools import cycle
 
 
 
@@ -33,12 +34,11 @@ def experiment_status(config_file='experiments_config.yaml'):
 from nltk.corpus import wordnet 
 
 class TextAugmentation:
-    def __init__(self, alpha_sr=0.1, alpha_ri=0.1, alpha_rs=0.1, p_rd=0.1, num_aug=9):
+    def __init__(self, alpha_sr=0.1, alpha_ri=0.1, alpha_rs=0.1, p_rd=0.1):
         self.alpha_sr = alpha_sr  
         self.alpha_ri = alpha_ri  
         self.alpha_rs = alpha_rs  
         self.p_rd = p_rd          
-        self.num_aug = num_aug    
 
     def synonym_replacement(self, words, n):
         new_words = words.copy()
@@ -124,8 +124,8 @@ class TextAugmentation:
     def eda(self, dataframe):
         spam_rows = dataframe[dataframe['target'] == 1].shape[0]
         ham_rows = dataframe[dataframe['target'] == 0].shape[0]
-        num_rows = 5
-        num_new_per_technique = int(num_rows/4)+1
+        num_aug = ham_rows - spam_rows
+        num_new_per_technique = int(num_aug/4)+1
 
         sentences = dataframe['features'].tolist()
         words = []
@@ -161,15 +161,23 @@ class TextAugmentation:
 
         random.shuffle(augmented_sentences)
 
-        if self.num_aug >= 1:
-            augmented_sentences = augmented_sentences[:self.num_aug]
+        if num_aug >= 1:
+            augmented_sentences = augmented_sentences[:num_aug]
         else:
-            keep_prob = self.num_aug / len(augmented_sentences)
+            keep_prob = num_aug / len(augmented_sentences)
             augmented_sentences = [s for s in augmented_sentences if random.uniform(0, 1) < keep_prob]
 
-        augmented_sentences.append(augmented_sentences)
-        return augmented_sentences
-    
+        original_sentences = list(cycle(sentences))[:len(augmented_sentences)]
+
+        # Crear un DataFrame con las oraciones originales y las aumentadas
+        augmented_df = pd.DataFrame({
+            'original_sentence': original_sentences,
+            'augmented_sentence': augmented_sentences,
+            
+        })
+
+        return augmented_df
+        
     
     
     
@@ -178,10 +186,10 @@ class TextAugmentation:
 
     
 
-print("Directorio actual:", os.getcwd())
+# print("Directorio actual:", os.getcwd())
 
-train = pd.read_csv("data/gold/train.csv")
+# train = pd.read_csv("data/gold/train.csv")
+# ref = train.iloc[0:5]
+# text_aug = TextAugmentation(alpha_sr=0.2, alpha_ri=0.2, alpha_rs=0.2, p_rd=0.2)
 
-text_aug = TextAugmentation(alpha_sr=0.2, alpha_ri=0.2, alpha_rs=0.2, p_rd=0.1, num_aug=30)
-
-augmented_sentences = text_aug.eda(train)
+# augmented_sentences = text_aug.eda(ref)

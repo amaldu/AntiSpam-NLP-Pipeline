@@ -4,13 +4,13 @@ Here you can find all the theory and explanations behind the experimentation par
 
 # Index
 1. [Context](#Context) 
+2. [Metrics used](#Metrics-used) (theory)
 2. [Experiments](#Experiments)
-  1. [Base-model BOW + Multinomial Naive Bayes](#Base-model-BOW-+-Multinomial-Naive-Bayes)
+  1. [Baseline-model BOW + Multinomial Naive Bayes](#Baseline-model-BOW-+-Multinomial-Naive-Bayes)
     - [BOW](#Bag-of-Words-as-Vectorizer) (theory)  
     - [Multinomial Naive Bayes](#Multinomial-Naive-Bayes) (theory)  
-    - [Metrics used](#Metrics-used) (theory)
     - [Results](#Results) 🚧
-  2. []
+  2. [Easy Data Augmentation Techniques](#Easy-Data-Augmentation-Techniques)
 2. [SMOTE]
 3. [Methods used](#Methods-used)
 
@@ -26,54 +26,8 @@ Situation B: a SPAM email is incorrectly categorized as legitimate, meaning it r
 
 Trade-off between FP and FN: in spam detection, there's often a trade-off between false positives and false negatives. A model that minimizes false positives might allow more false negatives, and vice versa. In our case I decided that sending HAM e-mails to the SPAM inbox would be more problematic than the other way around. That's the reason behind using F0.5-score 
 
-# Experiments
 
-## Base-model BOW + Multinomial Naive Bayes
-
-You can find the notebook [here](https://github.com/AMaldu/spam_detector/blob/main/notebooks/experimentation/base_model_bow_MNB.ipynb)
-
-
-
-Most machine learning algorithms require numerical input so a vectorizer is needed but which type?
-
-### Bag of Words as Vectorizer
-
-**What is BOW?**
-
-Bow is a technique that transforms text data into a set of tokens to feed the model. Here's how it works:
-
-1. Tokenization: The text is split into individual words or tokens
-2. Vocabulary Creation: All unique words (or tokens) from the entire text corpus are collected to form a vocabulary
-3. Vector Representation: Each document is represented as a vector where each element corresponds to the presence or frequency of a word from the vocabulary
-
-**Why BOW?** 
-
-1. BOW is simple to implement and understand
-2. The semantic meaning of the e-mails is not that important because in this case we want to capture keywords or phrases like  "free", "money", "offer", "limited time", "winner" and their frequencies can be indicative of spam or ham
-3. This is a vectorizer for the purpose of creating a base model. Let's keep it simple :)
-
-### Multinomial Naive Bayes
-
-**What is Multinomial Naive Bayes?**
-
-The ***Multinomial Naive Bayes (MNB) model*** is a variant of the Naive Bayes algorithm that is particularly suited for classification tasks where the features are counts or frequencies of words in text data. It is called "multinomial" because it assumes that the features (typically word counts) follow a multinomial distribution like ours where the dependent variables are represented by the frequency of each word in the text data.
-
-Naive Bayes classifiers are based on Bayes' Theorem and assume that the features are conditionally independent given the class and that makes this model have less tendency to overfit. While this assumption is often unrealistic in practice, it simplifies the computation, making Naive Bayes a very efficient algorithm.
-
-The Multinomial Naive Bayes is particularly effective for problems where the features are word counts or frequency counts of events, such as in text classification problems.
-
-**And why Multinomial Naive Bayes?**
-
-Naive Bayes is a popular algorithm due to its simplicity, efficiency, and effectiveness. It is often used as a baseline classifier for comparison with other more complex algorithms. This model is a good choice for problems where the features of the data are relatively independent and where the training data is limited. The dataset is going to be processed by a non-binary BOW (so we will get word frequencies) and this is a first approach I will leave other Naive Bayes algorithms for future iterations. 
-
-
-<!-- What could I use in the future? 
-
-- Binary BOW + Bernoulli Naive Bayes, since it's suitable for working in the presence (1) or absence (0) or a word.
-
-- Since my dataset is very imbalaced I can use BOW + Complement Naive Bayes that focuses more on the minority class. -->
-
-### Metrics used
+# Metrics used
 
 Context: 
 - The dataset is imbalanced with a 13.41% of positive class (SPAM)
@@ -162,6 +116,69 @@ Gain and Lift charts – These charts check the rank ordering of the probabiliti
 
 K-S or Kolmogorov-Smirnov chart – This chart measures the classification model’s performance. It is a measure of the degree of separation between negative and positive distribution.
 
+
+# Experiments
+
+## Baseline-model BOW + Multinomial Naive Bayes
+
+You can find the notebook [here](https://github.com/AMaldu/spam_detector/blob/main/notebooks/experimentation/base_model_bow_MNB.ipynb)
+
+
+
+Most machine learning algorithms require numerical input so a vectorizer is needed but which type?
+
+### Bag of Words as Vectorizer
+
+**What is BOW?**
+
+Bow is a technique that transforms text data into a set of tokens to feed the model. Here's how it works:
+
+1. Tokenization: The text is split into individual words or tokens
+2. Vocabulary Creation: All unique words (or tokens) from the entire text corpus are collected to form a vocabulary
+3. Vector Representation: Each document is represented as a vector where each element corresponds to the presence or frequency of a word from the vocabulary
+
+**Why BOW?** 
+
+1. BOW is simple to implement and understand
+2. The semantic meaning of the e-mails is not that important because in this case we want to capture keywords or phrases like  "free", "money", "offer", "limited time", "winner" and their frequencies can be indicative of spam or ham
+3. This is a vectorizer for the purpose of creating a base model. Let's keep it simple :)
+
+### Multinomial Naive Bayes
+
+**What is Multinomial Naive Bayes?**
+
+The ***Multinomial Naive Bayes (MNB) model*** is a variant of the Naive Bayes algorithm that is particularly suited for classification tasks where the features are counts or frequencies of words in text data. It is called "multinomial" because it assumes that the features (typically word counts) follow a multinomial distribution like ours where the dependent variables are represented by the frequency of each word in the text data.
+
+Naive Bayes classifiers are based on Bayes' Theorem and assume that the features are conditionally independent given the class and that makes this model have less tendency to overfit. While this assumption is often unrealistic in practice, it simplifies the computation, making Naive Bayes a very efficient algorithm.
+
+The Multinomial Naive Bayes is particularly effective for problems where the features are word counts or frequency counts of events, such as in text classification problems.
+
+**And why Multinomial Naive Bayes?**
+
+Naive Bayes is a popular algorithm due to its simplicity, efficiency, and effectiveness. It is often used as a baseline classifier for comparison with other more complex algorithms. This model is a good choice for problems where the features of the data are relatively independent and where the training data is limited. The dataset is going to be processed by a non-binary BOW (so we will get word frequencies) and this is a first approach I will leave other Naive Bayes algorithms for future iterations. 
+
+### Results
+
+
+# Easy Data Augmentation Techniques 
+
+This experiment is based on the idea of this project 
+
+Wei, Jason, and Kai Zou.  
+"EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks."  
+*Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)*,  
+November 2019, Hong Kong, China, Association for Computational Linguistics.  
+[Paper Link](https://www.aclweb.org/anthology/D19-1670)
+
+The idea of this approach is to apply different procedures for text augmentation based on the following strategies:
+
+
+  - **Synonym Replacement (SR)**: Randomly choose n words from the sentence that are not stop words. Replace each of these words with one of its synonyms chosen at random.
+  - **Random Insertion (RI)**: Find a random synonym of a random word in the sentence that is not a stop word. Insert that synonym into a random position in the sentence. Do this n times.
+  - **Random Swap (RS)**: Randomly choose two words in the sentence and swap their positions. Do this n times.
+  - **Random Deletion (RD)**: For each word in the sentence, randomly remove it with probability p.
+
+### Results
 
 ### Results
 

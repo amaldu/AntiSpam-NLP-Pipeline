@@ -175,6 +175,12 @@ class TextAugmentation:
             'augmented_sentence': augmented_sentences,
             
         })
+        
+        os.makedirs('data/gold', exist_ok=True)
+        augmented_df.to_csv('data/gold/augmented_data.csv', index=False)
+        print("DataFrame saved to 'data/gold/augmented_data.csv'.")
+
+
 
         return augmented_df
         
@@ -186,10 +192,9 @@ class TextAugmentation:
 
     
 
-# print("Directorio actual:", os.getcwd())
+print("Directorio actual:", os.getcwd())
 
-# train = pd.read_csv("data/gold/train.csv")
-# ref = train.iloc[0:5]
-# text_aug = TextAugmentation(alpha_sr=0.2, alpha_ri=0.2, alpha_rs=0.2, p_rd=0.2)
+train = pd.read_csv("data/gold/train.csv")
+text_aug = TextAugmentation(alpha_sr=0.2, alpha_ri=0.2, alpha_rs=0.2, p_rd=0.2)
 
-# augmented_sentences = text_aug.eda(ref)
+augmented_sentences = text_aug.eda(train)

@@ -11,14 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the code from your repository
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Install Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
-          echo "export PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: |
@@ -26,10 +25,14 @@ jobs:
 
       - name: Run text augmentation script
         run: |
-          python notebooks/experimentation/experiments_utils.py
+          poetry run python notebooks/experimentation/experiments_utils.py
+
+      - name: List files in data/gold
+        run: |
+          ls -R data/gold
 
       - name: Upload augmented data
         uses: actions/upload-artifact@v3
         with:
           name: augmented_data
-          path: data/gold/textAug_data.csv
+          path: data/gold/augmented_data.csv

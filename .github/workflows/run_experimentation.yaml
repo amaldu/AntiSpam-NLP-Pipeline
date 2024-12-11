@@ -39,9 +39,23 @@ jobs:
           echo "Files in Data Directory:"
           ls -R data
 
+      - name: Monitor system resources before execution
+        run: |
+          echo "Memory usage before execution:"
+          free -m
+          echo "CPU usage:"
+          top -n 1
+
       - name: Run text augmentation script
         run: |
           poetry run python notebooks/experimentation/experiments_utils.py
+
+      - name: Monitor system resources after execution
+        run: |
+          echo "Memory usage after execution:"
+          free -m
+          echo "CPU usage:"
+          top -n 1
 
       - name: Upload augmented data
         uses: actions/upload-artifact@v3

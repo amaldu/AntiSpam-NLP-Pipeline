@@ -43,10 +43,6 @@ jobs:
         run: |
           poetry run python notebooks/experimentation/experiments_utils.py
 
-      - name: List files in data/gold
-        run: |
-          ls -R data/gold
-
       - name: Upload augmented data
         uses: actions/upload-artifact@v3
         with:

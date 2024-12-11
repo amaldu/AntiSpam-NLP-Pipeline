@@ -195,6 +195,8 @@ class TextAugmentation:
 print("Directorio actual:", os.getcwd())
 
 train = pd.read_csv("data/gold/train.csv")
+ref = train.copy()
+final = ref.iloc[0:50]
 text_aug = TextAugmentation(alpha_sr=0.2, alpha_ri=0.2, alpha_rs=0.2, p_rd=0.2)
 
-augmented_sentences = text_aug.eda(train)
+augmented_sentences = text_aug.eda(final)

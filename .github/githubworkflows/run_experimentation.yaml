@@ -1,0 +1,35 @@
+name: Run Experimentation Script
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code from your repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "export PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
+
+      - name: Install dependencies
+        run: |
+          poetry install
+
+      - name: Run text augmentation script
+        run: |
+          python notebooks/experimentation/experiments_utils.py
+
+      - name: Upload augmented data
+        uses: actions/upload-artifact@v3
+        with:
+          name: augmented_data
+          path: data/gold/textAug_data.csv

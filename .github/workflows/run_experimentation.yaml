@@ -44,7 +44,7 @@ jobs:
           echo "Memory usage before execution:"
           free -m
           echo "CPU usage:"
-          top -n 1
+          vmstat 1 5
 
       - name: Run text augmentation script
         run: |
@@ -55,7 +55,7 @@ jobs:
           echo "Memory usage after execution:"
           free -m
           echo "CPU usage:"
-          top -n 1
+          vmstat 1 5
 
       - name: Upload augmented data
         uses: actions/upload-artifact@v3

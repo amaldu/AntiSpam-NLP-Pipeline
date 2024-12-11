@@ -1,12 +1,14 @@
-import yaml
-import os
+import logging
 import random
-from random import shuffle
-random.seed(1)
 import pandas as pd
+import os
+import time
 from itertools import cycle
+from nltk.corpus import wordnet
+import yaml
 
 
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def experiment_status(config_file='experiments_config.yaml'):
     """
@@ -31,16 +33,32 @@ def experiment_status(config_file='experiments_config.yaml'):
     return experiment_name, experiment_description, experiment_tags
 
 
-from nltk.corpus import wordnet 
+
+import os
+import psutil
+
+def log_system_resources():
+    memory = psutil.virtual_memory()
+    cpu = psutil.cpu_percent(interval=1)
+    logging.info("Memory Usage: %s MB (Total: %s MB)", memory.used / (1024 * 1024), memory.total / (1024 * 1024))
+    logging.info("CPU Usage: %s%%", cpu)
+
+
+
+
 
 class TextAugmentation:
     def __init__(self, alpha_sr=0.1, alpha_ri=0.1, alpha_rs=0.1, p_rd=0.1):
-        self.alpha_sr = alpha_sr  
-        self.alpha_ri = alpha_ri  
-        self.alpha_rs = alpha_rs  
-        self.p_rd = p_rd          
+        logging.info("Initializing TextAugmentation class...")
+        self.alpha_sr = alpha_sr
+        self.alpha_ri = alpha_ri
+        self.alpha_rs = alpha_rs
+        self.p_rd = p_rd
+        logging.info("TextAugmentation class initialized with parameters: alpha_sr=%s, alpha_ri=%s, alpha_rs=%s, p_rd=%s",
+                     self.alpha_sr, self.alpha_ri, self.alpha_rs, self.p_rd)
 
     def synonym_replacement(self, words, n):
+        logging.debug("Starting synonym replacement...")
         new_words = words.copy()
         random_word_list = list(set(words))
         random.shuffle(random_word_list)
@@ -51,16 +69,17 @@ class TextAugmentation:
             if len(synonyms) >= 1:
                 synonym = random.choice(list(synonyms))
                 new_words = [synonym if word == random_word else word for word in new_words]
-                # print("replaced", random_word, "with", synonym)
                 num_replaced += 1
             if num_replaced >= n:
                 break
 
         sentence = ' '.join(new_words)
         new_words = sentence.split(' ')
+        logging.debug("Synonym replacement completed. Words replaced: %s", num_replaced)
         return new_words
 
     def get_synonyms(self, word):
+        logging.debug("Getting synonyms for word: %s", word)
         synonyms = set()
         for syn in wordnet.synsets(word): 
             for l in syn.lemmas(): 
@@ -69,9 +88,11 @@ class TextAugmentation:
                 synonyms.add(synonym) 
         if word in synonyms:
             synonyms.remove(word)
+        logging.debug("Found %d synonyms for word: %s", len(synonyms), word)
         return list(synonyms)
 
     def random_deletion(self, words, p):
+        logging.debug("Starting random deletion with probability: %s", p)
         if len(words) == 1:
             return words
         new_words = []
@@ -85,6 +106,7 @@ class TextAugmentation:
         return new_words
 
     def random_swap(self, words, n):
+        logging.debug("Starting random swap with n: %s", n)
         new_words = words.copy()
         for _ in range(n):
             new_words = self.swap_word(new_words)
@@ -103,6 +125,7 @@ class TextAugmentation:
         return new_words
 
     def random_insertion(self, words, n):
+        logging.debug("Starting random insertion with n: %s", n)
         new_words = words.copy()
         for _ in range(n):
             self.add_word(new_words)
@@ -122,6 +145,9 @@ class TextAugmentation:
         new_words.insert(random_idx, random_synonym)
 
     def eda(self, dataframe):
+        logging.info("Starting data augmentation process...")
+        start_time = time.time()
+
         spam_rows = dataframe[dataframe['target'] == 1].shape[0]
         ham_rows = dataframe[dataframe['target'] == 0].shape[0]
         num_aug = ham_rows - spam_rows
@@ -135,6 +161,8 @@ class TextAugmentation:
         words = [word for word in words if word != '']
         num_words = len(words)
         augmented_sentences = []
+
+        logging.debug("Number of words to process: %d", num_words)
 
         if self.alpha_sr > 0:
             n_sr = max(1, int(self.alpha_sr * num_words))
@@ -173,18 +201,14 @@ class TextAugmentation:
         augmented_df = pd.DataFrame({
             'original_sentence': original_sentences,
             'augmented_sentence': augmented_sentences,
-            
         })
-        
+
         os.makedirs('data/gold', exist_ok=True)
         augmented_df.to_csv('data/gold/augmented_data.csv', index=False)
-        print("DataFrame saved to 'data/gold/augmented_data.csv'.")
+        logging.info("DataFrame saved to 'data/gold/augmented_data.csv'.")
 
-
-
+        logging.info(f"Data augmentation completed in {time.time() - start_time:.2f} seconds.")
         return augmented_df
-        
-    
     
     
     

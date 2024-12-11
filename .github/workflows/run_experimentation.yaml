@@ -9,6 +9,7 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
+    timeout-minutes: 68
 
     steps:
       - name: Checkout code
@@ -25,7 +26,18 @@ jobs:
 
       - name: Download NLTK resources
         run: |
-          poetry run python -m nltk.downloader wordnet
+          poetry run python -c "import nltk; nltk.data.path.append('/home/runner/nltk_data'); nltk.download('wordnet', download_dir='/home/runner/nltk_data')"
+
+      - name: Debug environment
+        run: |
+          echo "Current Directory:"
+          pwd
+          echo "Python Version:"
+          python --version
+          echo "Installed Packages:"
+          poetry show
+          echo "Files in Data Directory:"
+          ls -R data
 
       - name: Run text augmentation script
         run: |

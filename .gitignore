@@ -2,6 +2,11 @@ notebooks/experimentation/artifacts/
 notebooks/experimentation/backend.db
 
 .env
-
-venv/
+.venv/
 __pycache__/
+*.pyc
+*.pyo
+
+.DS_Store
+.idea/
+.vscode/

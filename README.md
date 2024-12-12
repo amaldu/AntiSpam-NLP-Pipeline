@@ -8,7 +8,7 @@
 2. [About the data](#About-the-data)
 3. [Methods used](#Methods-used) Theory behind Decision-Making Process 🚧
     - [EDA](#EDA)
-    - [Cleaning](#Cleaning)
+    - [Preprocessing](#Preprocessing)
     - [Experimentation](#Experimentation) Theory behind Decision-Making Process 🚧
 6. [Technologies](#Technologies) 🚧
 7. [Installation](#Installation) 🚧
@@ -68,7 +68,7 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 
 
-## 
+
 
 # Experimentation
 This section only contains results. If you want to take a look at the Decision-Making Process please take a look at the Experimentation [README file](https://github.com/AMaldu/spam_detector/blob/main/notebooks/experimentation/README.md) 

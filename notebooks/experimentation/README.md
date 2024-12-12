@@ -160,7 +160,31 @@ Naive Bayes is a popular algorithm due to its simplicity, efficiency, and effect
 ### Results
 
 
-# Easy Data Augmentation Techniques 
+
+# Oversampling techniques
+
+The dataset is imbalanced so there are two ways to balance the amount of rows per clase. Undersampling the dataset does not make sense because of its size so I will apply some commonly used methods for oversampling it.
+
+
+Natural Language Processing augmentation
+
+    Thesaurus
+    Text Generation
+    Back Translation
+    Word Embeddings
+    Contextualized Word Embeddings
+    Paraphrasing
+    Text perturbation
+
+
+
+## Citation
+
+in progress..
+
+
+
+## Easy Data Augmentation Techniques 
 
 This experiment is based on the idea of this project 
 
@@ -185,7 +209,37 @@ The idea of this approach is to apply different procedures for text augmentation
 Check https://www.markovml.com/blog/baseline-models
 
 
-# Oversampling techniques
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Back translation
 In this method, we translate the text data to some language and then translate it back to the original language. This can help to generate textual data with different words while preserving the context of the text data. 

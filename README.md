@@ -19,7 +19,7 @@
 This project presents a step-by-step guide to building an efficient e-mail spam classification model.
 
 <p align="center">
-  <img src="images/intro.png" width="300"/>
+  <img src="images/intro.png" width="500"/>
 </p>
 
 

@@ -10,7 +10,7 @@ Here you can find all the theory and explanations behind the experimentation par
     - [BOW](#Bag-of-Words-as-Vectorizer) (theory)  
     - [Multinomial Naive Bayes](#Multinomial-Naive-Bayes) (theory)  
     - [Results](#Results) 🚧
-  2. [Easy Data Augmentation Techniques](#Easy-Data-Augmentation-Techniques)
+  2. [Text Augmentation Techniques](#Text-Augmentation-Techniques)
 2. [SMOTE]
 3. [Methods used](#Methods-used)
 
@@ -161,8 +161,62 @@ Naive Bayes is a popular algorithm due to its simplicity, efficiency, and effect
 
 
 
-# Oversampling techniques
+# Text Augmentation techniques
 
+## nlpAug library
+
+This python library helps you with augmenting nlp for your machine learning projects. 
+
+
+### Citation
+@misc{ma2019nlpaug,
+  title={NLP Augmentation},
+  author={Edward Ma},
+  howpublished={https://github.com/makcedward/nlpaug},
+  year={2019}
+}
+
+Due to the nature of this dataset I decided to apply the following methods:
+
+Char augmenters:
+1. KeyboardAug/QWERTYAug: Simulate keyboard distance error
+2. AntonymAug: Substitute opposite meaning word according to WordNet antonym
+
+Word augmenters:
+1. ContextualWordEmbsAug: Feeding surroundings word to BERT, DistilBERT, RoBERTa or XLNet language model to find out the most suitlabe word for augmentation
+2. SpellingAug: Substitute word according to spelling mistake dictionary
+3. SynonymAug: Substitute similar word according to WordNet/ PPDB synonym
+3. BackTranslationAug:Leverage two translation models for augmentation
+4. WordEmbsAug: Leverage word2vec, GloVe or fasttext embeddings to apply augmentation
+
+I will not use sentence augmenter methods since the e-mails are very short and the context is not that important as the keywords but this approach would be interesting to experiment with in the future. 
+
+These techniques can be used alone or combined. Let's experiment a bit with them :)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
 The dataset is imbalanced so there are two ways to balance the amount of rows per clase. Undersampling the dataset does not make sense because of its size so I will apply some commonly used methods for oversampling it.
 
 
@@ -174,7 +228,7 @@ Natural Language Processing augmentation
     Word Embeddings
     Contextualized Word Embeddings
     Paraphrasing
-    Text perturbation
+    Text perturbation -->
 
 
 

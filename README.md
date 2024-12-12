@@ -18,8 +18,10 @@
 
 This project presents a step-by-step guide to building an efficient e-mail spam classification model.
 
+<p align="center">
+  <img src="../../images/intro.png" width="300"/>
+</p>
 
-![spam classification](images/intro.png)
 
 By the end of this project, you'll have a powerful tool to help you filter out unwanted e-mails and ensure that your inbox is not filled with unnecessary content.
 

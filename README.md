@@ -46,23 +46,23 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 ## Preprocessing
 
-[Preprocessing notebook](https://github.com/AMaldu/spam_detector/blob/main/notebooks/preprocessing_v0.ipynb)
+[Notebook](https://github.com/AMaldu/spam_detector/blob/main/notebooks/preprocessing_v0.ipynb)
 
 1. Change of data types
 2. Drop duplicates
 3. Chars cleaning. Based on the notebook
   [Special Replacements Analysis notebook](https://github.com/AMaldu/spam_detector/blob/main/notebooks/special_chars_analysis.ipynb)
-  1. Replacement of special replacements  
-  2. Replacement of emojis
-  3. Conversion to lowecase
-  4. Removal of HTML tags
-  5. Removal of URLs
-  6. Replacement of numbers with "number"
-  7. Replacement of e-mail addresses with "emailaddr"
-  8. Removal of punctutation
-  9. Removal of Non-Alphabetic Characters
-  10. Collapse of multiple whitespaces into single whitespace
-  
+    1. Replacement of special replacements  
+    2. Replacement of emojis
+    3. Conversion to lowecase
+    4. Removal of HTML tags
+    5. Removal of URLs
+    6. Replacement of numbers with "number"
+    7. Replacement of e-mail addresses with "emailaddr"
+    8. Removal of punctutation
+    9. Removal of Non-Alphabetic Characters
+    10. Collapse of multiple whitespaces into single whitespace
+
 4. Tokenization
 5. Removal of stopwords
 6. Lemmatization

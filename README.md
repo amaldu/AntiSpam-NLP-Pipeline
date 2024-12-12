@@ -50,8 +50,7 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 1. Change of data types
 2. Drop duplicates
-3. Chars cleaning. Based on the notebook
-  [Special Replacements Analysis notebook](https://github.com/AMaldu/spam_detector/blob/main/notebooks/special_chars_analysis.ipynb)
+3. Chars cleaning. Based on this [Notebook](https://github.com/AMaldu/spam_detector/blob/main/notebooks/special_chars_analysis.ipynb)
     1. Replacement of special replacements  
     2. Replacement of emojis
     3. Conversion to lowecase

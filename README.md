@@ -38,7 +38,7 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 # Methods used
 
 ## EDA
-[Notebook](https://github.com/AMaldu/spam_detector/blob/main/notebooks/eda_v0.ipynb)
+[Notebook](https://github.com/AMaldu/spam_detector/blob/main/research/eda_v0.ipynb)
 1. Analysis of basic information about the dataset.
 2. Change data types for more memory efficiency and data integrity.
 3. Removal of duplicates.
@@ -46,11 +46,11 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 ## Preprocessing
 
-[Notebook](https://github.com/AMaldu/spam_detector/blob/main/notebooks/preprocessing_v0.ipynb)
+[Notebook](https://github.com/AMaldu/spam_detector/blob/main/research/preprocessing_v0.ipynb)
 
 1. Change of data types
 2. Drop duplicates
-3. Chars cleaning. Based on this [Notebook](https://github.com/AMaldu/spam_detector/blob/main/notebooks/special_chars_analysis.ipynb)
+3. Chars cleaning. Based on this [Notebook](https://github.com/AMaldu/spam_detector/blob/main/research/special_chars_analysis.ipynb)
     1. Replacement of special replacements  
     2. Replacement of emojis
     3. Conversion to lowecase
@@ -71,7 +71,7 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 
 # Experimentation
-This section only contains results. If you want to take a look at the Decision-Making Process please take a look at the Experimentation [README file](https://github.com/AMaldu/spam_detector/blob/main/notebooks/experimentation/README.md) 
+This section only contains results. If you want to take a look at the Decision-Making Process please take a look at the Experimentation [README file](https://github.com/AMaldu/spam_detector/blob/main/experiments/EXPERIMENTS_GUIDELINE.md) 
 1. Base model BOW + Multinomial Naive Bayes
 
 

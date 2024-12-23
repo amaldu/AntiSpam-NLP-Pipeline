@@ -42,7 +42,7 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 1. Analysis of basic information about the dataset.
 2. Change data types for more memory efficiency and data integrity.
 3. Removal of duplicates.
-4. Basic viz of features.
+4. Basic viz of features.    
 
 ## Preprocessing
 

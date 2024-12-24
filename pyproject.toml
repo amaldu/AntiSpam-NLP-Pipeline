@@ -23,6 +23,7 @@ joblib = "^1.4.2"
 textaugment = "^2.0.0"
 nlpaug = "^1.1.11"
 ipywidgets = "^8.1.5"
+boto3 = "^1.35.87"
 
 [tool.poetry.group.dev.dependencies]
 matplotlib = "^3.9.2"

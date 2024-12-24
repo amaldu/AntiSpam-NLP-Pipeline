@@ -38,7 +38,7 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 # Methods used
 
 ## EDA
-[Notebook](https://github.com/AMaldu/spam_detector/blob/main/research/eda_v0.ipynb)
+[Notebook](https://github.com/AMaldu/spam_detector/blob/main/research/eda.ipynb)
 1. Analysis of basic information about the dataset.
 2. Change data types for more memory efficiency and data integrity.
 3. Removal of duplicates.
@@ -46,7 +46,7 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 ## Preprocessing
 
-[Notebook](https://github.com/AMaldu/spam_detector/blob/main/research/preprocessing_v0.ipynb)
+[Notebook](https://github.com/AMaldu/spam_detector/blob/main/research/preprocessing.ipynb)
 
 1. Change of data types
 2. Drop duplicates

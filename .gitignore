@@ -1,5 +1,6 @@
 notebooks/experimentation/artifacts/
 notebooks/experimentation/backend.db
+spam-detector.code-workspace
 
 .env
 .venv/

@@ -25,11 +25,8 @@ jobs:
         export PATH="$HOME/.local/bin:$PATH"
         poetry install
 
-    # - name: Install dependencies with Poetry
-    #   run: |
-    #     poetry install --no-root --no-directory
-    #     poetry shell
-
+    - name: Change working directory to the correct folder
+      run: cd research/02_baseline_model
 
     - name: Execute Jupyter Notebook
       run: |

@@ -1,4 +1,4 @@
-name: Execute Jupyter Notebooks and Save Results to S3
+name: Manual Trigger to Train Notebook + register on Mlflow
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
 
     - name: Install dependencies with Poetry
       run: |
-        poetry install --no-interaction
+        poetry install --no-root --no-interaction
         poetry shell
 
 

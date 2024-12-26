@@ -1,18 +1,14 @@
 import logging
-import random
-import pandas as pd
 import os
-import time
-from itertools import cycle
-from nltk.corpus import wordnet
 import yaml
+import psutil
 
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def experiment_status(config_file='experiments_config.yaml'):
     """
-    Loads config from yaml file
+    Loads config from yaml file.
     
     Args:
     - config_file (str): file root to YAML.
@@ -20,22 +16,40 @@ def experiment_status(config_file='experiments_config.yaml'):
     Returns:
     - tuple: (experiment_name, experiment_description, experiment_tags)
     """
-    if not os.path.exists(config_file):
-        raise FileNotFoundError(f"The file {config_file} does not exist.")
+    try:
+        script_dir = os.path.dirname(__file__)  
+        absolute_config_path = os.path.join(script_dir, config_file)
+        
+        logging.info(f"Loading configuration from: {absolute_config_path}")
+        
+        if not os.path.exists(absolute_config_path):
+            logging.error(f"File not found: {absolute_config_path}")
+            raise FileNotFoundError(f"The file {absolute_config_path} does not exist.")
+        
+        with open(absolute_config_path, 'r') as file:
+            config = yaml.safe_load(file)
+        
+        experiment_name = config.get('experiment_name')
+        experiment_description = config.get('experiment_description')
+        experiment_tags = config.get('experiment_tags')
+        
+        logging.info("Configuration successfully loaded.")
+        return experiment_name, experiment_description, experiment_tags
     
-    with open(config_file, 'r') as file:
-        config = yaml.safe_load(file)
+    except FileNotFoundError as e:
+        logging.error(f"FileNotFoundError: {e}")
+        raise
     
-    experiment_name = config['experiment_name']
-    experiment_description = config['experiment_description']
-    experiment_tags = config['experiment_tags']
+    except yaml.YAMLError as e:
+        logging.error(f"YAML parsing error: {e}")
+        raise
     
-    return experiment_name, experiment_description, experiment_tags
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        raise
 
 
 
-import os
-import psutil
 
 def log_system_resources():
     memory = psutil.virtual_memory()

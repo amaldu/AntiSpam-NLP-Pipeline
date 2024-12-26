@@ -25,11 +25,9 @@ jobs:
         export PATH="$HOME/.local/bin:$PATH"
         poetry install
 
-    - name: Change working directory to the correct folder
-      run: cd research/02_baseline_model && pwd
-
     - name: Execute Jupyter Notebook
       run: |
+        cd research/02_baseline_model && pwd
         poetry run papermill ./baseline_model.ipynb ./baseline_model.ipynb \
           --kernel python3
         echo "Notebook executed successfully"

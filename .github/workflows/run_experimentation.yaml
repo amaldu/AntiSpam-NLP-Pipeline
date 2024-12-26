@@ -1,64 +1,64 @@
-name: Run Experimentation Script
+# name: Run Experimentation Script
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+# on:
+#   push:
+#     branches:
+#       - main
+#   workflow_dispatch:
 
-jobs:
-  run-script:
-    runs-on: ubuntu-latest
-    timeout-minutes: 300
+# jobs:
+#   run-script:
+#     runs-on: ubuntu-latest
+#     timeout-minutes: 300
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v3
 
-      - name: Install Poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
+#       - name: Install Poetry
+#         run: |
+#           curl -sSL https://install.python-poetry.org | python3 -
+#           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-      - name: Install dependencies
-        run: |
-          poetry install
+#       - name: Install dependencies
+#         run: |
+#           poetry install
 
-      - name: Download NLTK resources
-        run: |
-          poetry run python -c "import nltk; nltk.data.path.append('/home/runner/nltk_data'); nltk.download('wordnet', download_dir='/home/runner/nltk_data')"
+#       - name: Download NLTK resources
+#         run: |
+#           poetry run python -c "import nltk; nltk.data.path.append('/home/runner/nltk_data'); nltk.download('wordnet', download_dir='/home/runner/nltk_data')"
 
-      - name: Debug environment
-        run: |
-          echo "Current Directory:"
-          pwd
-          echo "Python Version:"
-          python --version
-          echo "Installed Packages:"
-          poetry show
-          echo "Files in Data Directory:"
-          ls -R data
+#       - name: Debug environment
+#         run: |
+#           echo "Current Directory:"
+#           pwd
+#           echo "Python Version:"
+#           python --version
+#           echo "Installed Packages:"
+#           poetry show
+#           echo "Files in Data Directory:"
+#           ls -R data
 
-      - name: Monitor system resources before execution
-        run: |
-          echo "Memory usage before execution:"
-          free -m
-          echo "CPU usage:"
-          vmstat 1 5
+#       - name: Monitor system resources before execution
+#         run: |
+#           echo "Memory usage before execution:"
+#           free -m
+#           echo "CPU usage:"
+#           vmstat 1 5
 
-      - name: Run text augmentation script
-        run: |
-          poetry run python notebooks/experimentation/experiments_utils.py
+#       - name: Run text augmentation script
+#         run: |
+#           poetry run python notebooks/experimentation/experiments_utils.py
 
-      - name: Monitor system resources after execution
-        run: |
-          echo "Memory usage after execution:"
-          free -m
-          echo "CPU usage:"
-          vmstat 1 5
+#       - name: Monitor system resources after execution
+#         run: |
+#           echo "Memory usage after execution:"
+#           free -m
+#           echo "CPU usage:"
+#           vmstat 1 5
 
-      - name: Upload augmented data
-        uses: actions/upload-artifact@v3
-        with:
-          name: augmented_data
-          path: data/gold/augmented_data.csv
+#       - name: Upload augmented data
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: augmented_data
+#           path: data/gold/augmented_data.csv

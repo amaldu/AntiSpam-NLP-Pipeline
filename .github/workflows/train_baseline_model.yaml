@@ -27,7 +27,7 @@ jobs:
 
     - name: Install dependencies with Poetry
       run: |
-        poetry install --no-root --no-interaction
+        poetry install --no-root --no-directory
         poetry shell
 
 

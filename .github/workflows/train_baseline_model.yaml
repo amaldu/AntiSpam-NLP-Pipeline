@@ -29,8 +29,7 @@ jobs:
       run: |
         cd research/02_baseline_model
         #FIXME - Remember to change the name of the notebook file here in future iterations
-        notebook_file="baseline_model.ipynb"  
-        poetry run papermill ./$notebook_file ./$notebook_file --kernel python3 -p NOTEBOOK_NAME=$notebook_file
+        poetry run papermill ./$notebook_file ./$notebook_file --kernel python3 
         echo "Notebook executed successfully"
 
 

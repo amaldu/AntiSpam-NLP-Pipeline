@@ -27,9 +27,11 @@ jobs:
 
     - name: Execute Jupyter Notebook
       run: |
-        cd research/02_baseline_model && pwd
-        poetry run papermill ./baseline_model.ipynb ./baseline_model.ipynb \
-          --kernel python3
+        cd research/02_baseline_model
+        #NOTE - Remember to change the name of the notebook file here in future iterations
+        notebook_file="baseline_model.ipynb"  
+        poetry run papermill ./$notebook_file ./$notebook_file --kernel python3
+        echo "NOTEBOOK_NAME=$notebook_file" >> $GITHUB_ENV
         echo "Notebook executed successfully"
 
 

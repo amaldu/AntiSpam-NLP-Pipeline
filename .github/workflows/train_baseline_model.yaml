@@ -27,9 +27,10 @@ jobs:
 
     - name: Execute Jupyter Notebook
       run: |
-        cd research/02_baseline_model
-        #FIXME - Remember to change the name of the notebook file here in future iterations
-        poetry run papermill ./$notebook_file ./$notebook_file --kernel python3 
+        cd research/02_baseline_model && pwd
+        #FIXME - Remember to change the notebook names
+        poetry run papermill ./baseline_model.ipynb ./baseline_model.ipynb \
+          --kernel python3
         echo "Notebook executed successfully"
 
 

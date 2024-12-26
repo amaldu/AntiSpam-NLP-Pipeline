@@ -33,7 +33,7 @@ jobs:
 
     - name: Execute Jupyter Notebook
       run: |
-        papermill research/02_baseline_model/baseline_model.ipynb research/02_baseline_model/baseline_model.ipynb \
+        poetry run papermill research/02_baseline_model/baseline_model.ipynb research/02_baseline_model/baseline_model.ipynb \
           --kernel python3
         echo "Notebook executed successfully"
 

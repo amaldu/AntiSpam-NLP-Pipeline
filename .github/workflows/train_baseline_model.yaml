@@ -25,10 +25,10 @@ jobs:
         export PATH="$HOME/.local/bin:$PATH"
         poetry install
 
-    - name: Install dependencies with Poetry
-      run: |
-        poetry install --no-root --no-directory
-        poetry shell
+    # - name: Install dependencies with Poetry
+    #   run: |
+    #     poetry install --no-root --no-directory
+    #     poetry shell
 
 
     - name: Execute Jupyter Notebook

@@ -20,7 +20,7 @@ jobs:
         python-version: '3.10'
 
 
-        
+
     - name: Install Poetry
       run: |
         curl -sSL https://install.python-poetry.org | python3 -
@@ -40,3 +40,8 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: "eu-central-1"
   
+    - name: Upload logs as an artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: execution-logs
+        path: execution_log.txt

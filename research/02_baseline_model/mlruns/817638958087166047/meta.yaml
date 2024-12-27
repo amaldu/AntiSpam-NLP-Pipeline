@@ -1,0 +1,6 @@
+artifact_location: file:///home/maldu/dscience/projects/spam_detector/research/02_baseline_model/mlruns/817638958087166047
+creation_time: 1735296501557
+experiment_id: '817638958087166047'
+last_update_time: 1735296501557
+lifecycle_stage: active
+name: spam-classifier

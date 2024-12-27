@@ -31,11 +31,11 @@ jobs:
       run: |
         cd research/02_baseline_model && pwd
         #FIXME - Remember to change the notebook names
-        poetry run papermill ./baseline_model.ipynb ./baseline_model.ipynb \
-          --kernel python3
+        PYTHONUNBUFFERED=1  poetry run papermill ./baseline_model.ipynb ./baseline_model.ipynb \
+          --kernel python3 >> output.log 2>&1
         echo "Notebook executed successfully"
       continue-on-error: true
-      
+
       env:
         MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

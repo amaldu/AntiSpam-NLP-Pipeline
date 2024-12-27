@@ -32,9 +32,10 @@ jobs:
         cd research/02_baseline_model && pwd
         #FIXME - Remember to change the notebook names
         jupyter execute ./baseline_model.ipynb
-      shell: bash
+        # PYTHONUNBUFFERED=1  poetry run papermill ./baseline_model.ipynb ./baseline_model.ipynb \
+        #   --kernel python3 
         echo "Notebook executed successfully"
-      continue-on-error: true
+
 
       env:
         MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}

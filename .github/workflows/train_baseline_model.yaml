@@ -31,8 +31,9 @@ jobs:
       run: |
         cd research/02_baseline_model && pwd
         #FIXME - Remember to change the notebook names
-        PYTHONUNBUFFERED=1  poetry run papermill ./baseline_model.ipynb ./baseline_model.ipynb \
-          --kernel python3 
+        jupyter execute ./baseline_model.ipynb
+        # PYTHONUNBUFFERED=1  poetry run papermill ./baseline_model.ipynb ./baseline_model.ipynb \
+        #   --kernel python3 
         echo "Notebook executed successfully"
       continue-on-error: true
 

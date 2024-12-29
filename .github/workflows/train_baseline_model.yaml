@@ -30,11 +30,10 @@ jobs:
     - name: Execute Jupyter Notebook
       run: |
         cd research/02_baseline_model && pwd
-        ls -l
         #FIXME - Remember to change the notebook names
         poetry run papermill ./baseline_model.ipynb ./baseline_model.ipynb --kernel python3
         echo "Notebook executed successfully"
-        ls -l
+
 
 
       env:

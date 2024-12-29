@@ -1,0 +1,15 @@
+artifact_uri: file:///home/maldu/dscience/projects/spam_detector/research/02_baseline_model/mlruns/460347935269238979/adfec97babf146b7b712ac3091400a1c/artifacts
+end_time: 1735477407673
+entry_point_name: ''
+experiment_id: '460347935269238979'
+lifecycle_stage: active
+run_id: adfec97babf146b7b712ac3091400a1c
+run_name: baseline-model
+run_uuid: adfec97babf146b7b712ac3091400a1c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1735477404956
+status: 3
+tags: []
+user_id: maldu

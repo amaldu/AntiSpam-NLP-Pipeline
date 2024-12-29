@@ -31,8 +31,7 @@ jobs:
       run: |
         cd research/02_baseline_model && pwd
         #FIXME - Remember to change the notebook names
-        poetry run papermill ./baseline_model.ipynb ./baseline_model.ipynb \
-          --kernel python3 
+        poetry run papermill ./baseline_model.ipynb ./baseline_model.ipynb --kernel python3
         echo "Notebook executed successfully"
 
 

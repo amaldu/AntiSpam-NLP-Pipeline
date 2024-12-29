@@ -1,0 +1,8 @@
+digest: 5377665e
+name: validation dataset
+profile: '{"num_rows": 515, "num_elements": 1030}'
+schema: '{"mlflow_colspec": [{"type": "string", "name": "features", "required": true},
+  {"type": "long", "name": "target", "required": true}]}'
+source: '{"tags": {"mlflow.user": "maldu", "mlflow.source.name": "/home/maldu/.cache/pypoetry/virtualenvs/spam-detector-P2ybB3t6-py3.10/lib/python3.10/site-packages/ipykernel_launcher.py",
+  "mlflow.source.type": "LOCAL"}}'
+source_type: code

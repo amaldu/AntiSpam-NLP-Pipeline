@@ -21,11 +21,11 @@ jobs:
 
 
 
-    - name: Run image
-      uses: abatilo/actions-poetry@v2
-      with:
-        poetry-version: '1.8.4'
-
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+        export PATH="$HOME/.local/bin:$PATH"
+        poetry install
 
     - name: Execute Jupyter Notebook
       run: |
@@ -33,7 +33,6 @@ jobs:
         #FIXME - Remember to change the notebook names
         poetry run papermill ./baseline_model.ipynb ./baseline_model.ipynb --kernel python3
         echo "Notebook executed successfully"
-
 
 
       env:

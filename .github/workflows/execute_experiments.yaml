@@ -10,6 +10,8 @@ jobs:
     env: #set to true if you want to run the experiment 
       baseline_model: "false" 
       textaug_KeyboardAug_bow_MNB: "true"
+      textaug_AntonymAug_bow_MNB: "true"
+      textaug_SpellingAug_bow_MNB: "true"
 
     steps:
     - name: Checkout repository
@@ -58,6 +60,41 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
+
+
+    - name: Execute textaug_AntonymAug_bow_MNB if set to true
+      run: |
+        if [ "$textaug_AntonymAug_bow_MNB" = "true" ]; then
+        cd research/03_text_augmentation && pwd
+        poetry run papermill ./textaug_AntonymAug_bow_MNB.ipynb ./textaug_AntonymAug_bow_MNB.ipynb --kernel python3
+        echo "textaug_AntonymAug_bow_MNB executed successfully"
+        else
+            echo "Skipping textaug_AntonymAug_bow_MNB execution"
+          fi
+      env:
+        MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+
+
+    - name: Execute textaug_SpellingAug_bow_MNB if set to true
+      run: |
+        if [ "$textaug_SpellingAug_bow_MNB" = "true" ]; then
+        cd research/03_text_augmentation && pwd
+        poetry run papermill ./textaug_SpellingAug_bow_MNB.ipynb ./textaug_SpellingAug_bow_MNB.ipynb --kernel python3
+        echo "textaug_SpellingAug_bow_MNB executed successfully"
+        else
+            echo "Skipping textaug_SpellingAug_bow_MNB execution"
+          fi
+      env:
+        MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+
+
+  
 
 
 

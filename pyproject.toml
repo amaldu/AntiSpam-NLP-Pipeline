@@ -27,6 +27,7 @@ boto3 = "^1.35.87"
 torch = "^2.5.1"
 transformers = "^4.47.1"
 sentencepiece = "^0.2.0"
+colorama = "^0.4.6"
 
 [tool.poetry.group.dev.dependencies]
 matplotlib = "^3.9.2"

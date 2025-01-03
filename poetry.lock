@@ -6369,6 +6369,23 @@ botocore = ">=1.33.2,<2.0a.0"
 crt = ["botocore[crt] (>=1.33.2,<2.0a.0)"]
 
 [[package]]
+name = "sacremoses"
+version = "0.1.1"
+description = "SacreMoses"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "sacremoses-0.1.1-py3-none-any.whl", hash = "sha256:31e04c98b169bfd902144824d191825cd69220cdb4ae4bcf1ec58a7db5587b1a"},
+    {file = "sacremoses-0.1.1.tar.gz", hash = "sha256:b6fd5d3a766b02154ed80b962ddca91e1fd25629c0978c7efba21ebccf663934"},
+]
+
+[package.dependencies]
+click = "*"
+joblib = "*"
+regex = "*"
+tqdm = "*"
+
+[[package]]
 name = "safetensors"
 version = "0.4.5"
 description = ""
@@ -8242,4 +8259,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "031a35ae3f1c1d97f703b9cf7c5b10669b470886466dc2c63d0ec532d84fe98f"
+content-hash = "218830fb675652a43d18c947b1a0591688cb6b6a855bd2de546446574f6111c6"

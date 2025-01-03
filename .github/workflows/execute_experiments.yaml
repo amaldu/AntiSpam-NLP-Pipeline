@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env: #set to true if you want to run the experiment 
       baseline_model: "false" 
-      nlpaug_exploration: "true"
+      nlpaug_exploration: "false"
       nlpaug_KeyboardAug_bow_MNB: "false"
       nlpaug_AntonymAug_bow_MNB: "false"
       nlpaug_SpellingAug_bow_MNB: "false"

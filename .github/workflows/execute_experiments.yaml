@@ -47,16 +47,20 @@ jobs:
         AWS_REGION: ${{ secrets.AWS_REGION }}
 
 
-    - name: Execute baseline_model if set to true
+    - name: Execute nlpaug_exploration if set to true
       run: |
-        if [ "$baseline_model" = "true" ]; then
-        cd research/02_baseline_model && pwd
-        poetry run papermill ./baseline_model.ipynb ./baseline_model.ipynb --kernel python3
-        echo "baseline_model executed successfully"
+        if [ "$nlpaug_exploration" = "true" ]; then
+        cd research/03_text_augmentation && pwd
+        poetry run papermill ./nlpaug_exploration.ipynb ./nlpaug_exploration.ipynb --kernel python3
+        echo "nlpaug_exploration executed successfully"
         else
-            echo "Skipping baseline_model execution"
+            echo "Skipping nlpaug_exploration execution"
           fi
-
+      env:
+        MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
 
 
 

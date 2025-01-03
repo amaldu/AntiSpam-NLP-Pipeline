@@ -9,9 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     env: #set to true if you want to run the experiment 
       baseline_model: "false" 
-      textaug_KeyboardAug_bow_MNB: "true"
-      textaug_AntonymAug_bow_MNB: "true"
-      textaug_SpellingAug_bow_MNB: "true"
+      nlpaug_exploration: "true":
+      nlpaug_KeyboardAug_bow_MNB: "false"
+      nlpaug_AntonymAug_bow_MNB: "false"
+      nlpaug_SpellingAug_bow_MNB: "false"
 
     steps:
     - name: Checkout repository
@@ -44,6 +45,24 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
+
+
+    - name: Execute baseline_model if set to true
+      run: |
+        if [ "$baseline_model" = "true" ]; then
+        cd research/02_baseline_model && pwd
+        poetry run papermill ./baseline_model.ipynb ./baseline_model.ipynb --kernel python3
+        echo "baseline_model executed successfully"
+        else
+            echo "Skipping baseline_model execution"
+          fi
+      # env:
+      #   MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+      #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #   AWS_REGION: ${{ secrets.AWS_REGION }}
+
+
 
 
     - name: Execute textaug_KeyboardAug_bow_MNB if set to true

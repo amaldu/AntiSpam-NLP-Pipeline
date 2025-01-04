@@ -1,47 +1,48 @@
-import os,sys
-from dataclasses import dataclass
-
-
-import pandas as pd 
-import re
-from string import punctuation
-import nltk
-nltk.download('punkt')
-nltk.download('punkt_tab')
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
-stop_words = set(stopwords.words('english'))
-nltk.download('wordnet')
-from nltk.stem.wordnet import WordNetLemmatizer
-
+import pandas as pd
 import logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', stream=sys.stdout)
+import os 
 
-INPUT_FILE = "data/input_data.csv" 
-DB_FILE = "data/ingestion.db"       
-TABLE_NAME = "ingested_data"      
+import yaml
 
-def read_data(file_path):
-    logging.info(f"Reading the dataset from {file_path}")
+def read_data(config_file: str) -> pd.DataFrame:
+    with open(config_file, 'r') as file:
+        config = yaml.safe_load(file)
+
+    base_path = config['dataset']['path']
+    dataset_file = config['dataset']['file']
+    
+    dataset_path = os.path.join(base_path, dataset_file)
+    
+    logging.info(f"Reading the dataset from {dataset_path}")
+    
     try:
-        train = pd.read_csv(file_path)
-        test = pd.read_csv(file_path)
-        val = pd.read_csv(file_path)
-        return train, test, val
+        if not os.path.exists(dataset_path):
+            raise FileNotFoundError(f"Dataset '{dataset_path}' does not exist.")
+        
+        data = pd.read_csv(dataset_path)
+
+        if data.empty:
+            raise ValueError(f"The dataset '{dataset_path}' is empty or malformed.")
+        
+        return data
+
+    except FileNotFoundError as e:
+        logging.error(f"File not found: {e}")
+        raise
+    except pd.errors.EmptyDataError:
+        logging.error(f"The dataset '{dataset_path}' is empty.")
+        raise ValueError(f"The dataset '{dataset_path}' is empty and cannot be processed.")
+    except pd.errors.ParserError:
+        logging.error(f"Error parsing the dataset '{dataset_path}'.")
+        raise ValueError(f"There was an error parsing the dataset '{dataset_path}'.")
     except Exception as e:
         logging.error(f"Error reading the data: {e}")
-        raise
-
-def process_data(data):
-    logging.info(f"Processing data...")
-    try:
+        raise ValueError(f"An error occurred while reading the dataset '{dataset_path}': {e}")
 
 
 
-        logging.info(f"Procesamiento finalizado.")
-        return data
-    except Exception as e:
-        logging.error(f"Error al procesar datos: {e}")
-        raise
+
 
 def save_to_database(data, db_file, table_name):
     """Guarda datos en una base de datos SQLite."""

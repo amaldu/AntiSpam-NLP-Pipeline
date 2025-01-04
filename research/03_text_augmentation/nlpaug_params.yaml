@@ -1,0 +1,11 @@
+synonym_aug:
+  sources:
+    - wordnet
+    - ppdb
+  aug_p: 
+    min: 0.3
+    max: 0.8
+  aug_min: 1
+  aug_max: 
+    min: 5
+    max: 10

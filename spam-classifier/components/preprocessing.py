@@ -5,9 +5,19 @@ from string import punctuation
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-from typing import Optional
+from typing import Optional, Dict
+from ..utils.textaug_techniques import TextAugmentation
 
 stop_words = set(stopwords.words('english'))
+
+
+
+def clean_types_duplicates(df: pd.DataFrame) -> pd.DataFrame:
+    
+    df['Category'] = df['Category'].map({"ham": 0, "spam": 1}).astype(int)
+    df['Message'] = df['Message'].astype(str)
+    df.drop_duplicates(inplace=True)
+    return df
 
 def clean_text(text: str) -> str:
     special_replacements = {
@@ -53,40 +63,32 @@ def lemmatize_text(text: str) -> str:
     lemmatized_tokens = [lemmatizer.lemmatize(word) for word in tokens]
     return ' '.join(lemmatized_tokens)
 
-def preprocess(df: pd.DataFrame, use_nlpaug: Optional[bool] = False) -> pd.DataFrame:
-    """
-    Function to preprocess the data.
-    - Converts 'ham'/'spam' labels to 0/1 in 'Category'
-    - Cleans text in 'Message' column using `clean_text`
-    - Optionally applies text augmentation with `nlpaug`
-    - Tokenizes and removes stopwords
-    - Lemmatizes the text
+# def preprocess(
+#     df: pd.DataFrame, 
+#     use_nlpaug: Optional[bool] = False, 
+#     sa: float = None, 
+#     aa: float = None) -> pd.DataFrame:
 
-    Args:
-    df (pd.DataFrame): Input DataFrame with 'Category' and 'Message' columns.
-    use_nlpaug (bool): Whether to apply NLP augmentation before lemmatizing.
+    
+#     #NOTE - Spelling aug creates symbols and mayus so it has to come before cleaning
+#     #NOTE - oversampling factors could be a list of ONE OR MORE items so the for has to be outside
+#     #NOTE - spelling and synonim have lists and vals. the text augmentation function has to get one val
+#     # per iteration so the forst have to be ouside too.
+    
+#     if use_nlpaug and sa is not None and aa is not None:
+#         augmenter = TextAugmentation(sa=sa, aa=aa)
+#         augmenter.load_config('experiments_config.yaml') 
+#         augmented_data = augmenter.augment(df['Message'], df['Category']) 
+        
 
-    Returns:
-    pd.DataFrame: Preprocessed DataFrame.
-    """
+        
+#     df['Message'] = df['Message'].apply(clean_text)
     
-    df['Category'] = df['Category'].map({"ham": 0, "spam": 1}).astype(int)
-    df['Message'] = df['Message'].astype(str)
+
     
-    df.drop_duplicates(inplace=True)
+#     df['Message'] = df['Message'].apply(word_tokenize)
+#     df['Message'] = df['Message'].apply(remove_stopwords)
     
-    df['Message'] = df['Message'].apply(clean_text)
+#     df['Message'] = df['Message'].apply(lemmatize_text)
     
-    # Si se especifica, aplicamos NLP augmentation
-    if use_nlpaug:
-        aug = naw.SynonymAug(aug_p=0.1)  # Ejemplo de augumentación de sinónimos
-        df['Message'] = df['Message'].apply(aug.augment)
-    
-    # Tokenización y eliminación de stopwords
-    df['Message'] = df['Message'].apply(word_tokenize)
-    df['Message'] = df['Message'].apply(remove_stopwords)
-    
-    # Lematización del texto
-    df['Message'] = df['Message'].apply(lemmatize_text)
-    
-    return df
+#     return df

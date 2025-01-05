@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "spam-detector"
+name = "spam_detector"
 version = "0.1.0"
 description = "e-mail spam detector"
 authors = ["Maldu <contactme@gmail.com>"]

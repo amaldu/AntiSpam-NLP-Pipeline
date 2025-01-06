@@ -2,9 +2,10 @@ import pandas as pd
 import logging
 import sys
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', stream=sys.stdout)
 import os 
 import yaml
+import logging
+import exception
 
 
 def load_config(config_path):
@@ -19,10 +20,16 @@ def load_config(config_path):
         raise ValueError(f"Error reading the YAML: {e}")
 
 def read_dataset(config_path: str) -> pd.DataFrame:
+    if not os.path.isabs(config_path):
+        config_path = os.path.join(os.path.dirname(__file__), '../pipelines/experiments_config.yaml')
 
+    logging.info(f"Loading config from {config_path}")
+    
     config = load_config(config_path)
     base_path = config['path']
     dataset_file = config['file']
+    logging.info(f"Loading base_path from {base_path}")
+    logging.info(f"Loading dataset_file from {dataset_file}")
     dataset_path = os.path.join(base_path, dataset_file)
 
     logging.info(f"Reading the dataset from {dataset_path}")
@@ -41,7 +48,6 @@ def read_dataset(config_path: str) -> pd.DataFrame:
     except Exception as e:
         logging.error(f"Error reading the data: {e}")
         raise ValueError(f"An error occurred while reading the dataset '{dataset_path}': {e}")
-
 
 
 

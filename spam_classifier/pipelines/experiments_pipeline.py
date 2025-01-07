@@ -6,11 +6,11 @@ from spam_classifier.components.data_preprocessing import clean_types_duplicates
 from spam_classifier.components.split_data import train_test_val_split
 from spam_classifier.components.vectorizers import BowFeatureExtractor, TfidfFeatureExtractor
 from spam_classifier.components.models import MultinomialNaiveBayesClassifier, LogisticRegressionClassifier
-
+import os
 
 logging.basicConfig(filename='logs/app.log', level=logging.INFO)
 def baseline_experiment_v1():
-    config_path = "experiments_config.yaml"
+    config_path = os.path.join(os.path.dirname(__file__), "experiments_config.yaml")
     try:
         logging.info("Loading dataset...")
         data = read_dataset(config_path)
@@ -18,11 +18,11 @@ def baseline_experiment_v1():
         logging.info("Cleaning types and duplicates...")
         df_cleaned = clean_types_duplicates(data)
         
-        logging.info("Preprocessing data...")
-        df_preprocessed = preprocess(df_cleaned)
-        
         logging.info("Splitting into train, test and validation sets...")
-        X_train, X_val, X_test, y_train, y_val, y_test = train_test_val_split(df_preprocessed)
+        X_train, X_val, X_test, y_train, y_val, y_test = train_test_val_split(df_cleaned)
+        
+        logging.info("Preprocessing data...")
+        X_train, X_val, X_test, y_train, y_val, y_test  = preprocess(X_train, X_val, X_test, y_train, y_val, y_test)
         
         logging.info("Applying pipeline...")
         pipeline = Pipeline([

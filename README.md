@@ -6,7 +6,7 @@
 
 1. [Objective](#Objective)
 2. [About the data](#About-the-data)
-3. [Methods used](#Methods-used) Theory behind Decision-Making Process 🚧
+3. [Research](#Research) Theory behind Decision-Making Process 🚧
     - [EDA](#EDA)
     - [Preprocessing](#Preprocessing)
     - [Experimentation](#Experimentation) Theory behind Decision-Making Process 🚧
@@ -16,14 +16,14 @@
 
 # Objective
 
-This project presents a step-by-step guide to build an efficient e-mail spam classification model.
+This project presents a step-by-step guide to build an e-mail spam classification model.
 
 <p align="center">
   <img src="images/intro.png" width="500"/>
 </p>
 
 
-By the end of this project, you'll have a powerful tool to help you filter out unwanted e-mails and ensure that your inbox is not filled with unnecessary content.
+
 
 # About the data
 The dataset used for this project can be found [here](https://www.kaggle.com/datasets/mfaisalqureshi/spam-email) which consists of 5,574 messages with the following columns: 
@@ -35,19 +35,19 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 2. ***Message*** column with a list of messages without any type of format
 
-# Methods used
+# Research
 
 ## EDA
 [Notebook](https://github.com/AMaldu/spam_detector/blob/main/research/eda.ipynb)
 1. Analysis of basic information about the dataset.
-2. Change data types for more memory efficiency and data integrity.
-3. Removal of duplicates.
+
 4. Basic viz of features.    
 
 ## Preprocessing
 
 [Notebook](https://github.com/AMaldu/spam_detector/blob/main/research/preprocessing.ipynb)
-
+2. Change data types for more memory efficiency and data integrity.
+3. Removal of duplicates.
 1. Change of data types
 2. Drop duplicates
 3. Chars cleaning. Based on this [Notebook](https://github.com/AMaldu/spam_detector/blob/main/research/special_chars_analysis.ipynb)

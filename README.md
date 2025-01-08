@@ -121,7 +121,7 @@ Classification Report (Test):
 
 - aws 
 
-export MLFLOW_TRACKING_URI=http://ec2-3-72-255-44.eu-central-1.compute.amazonaws.com:5000
+
 
 
 # Installation

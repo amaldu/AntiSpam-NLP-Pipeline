@@ -1,12 +1,16 @@
 import logging
 from sklearn.pipeline import Pipeline
-from sklearn.metrics import classification_report
 from spam_classifier.components.data_ingestion import read_dataset
 from spam_classifier.components.data_preprocessing import clean_types_duplicates, preprocess
 from spam_classifier.components.split_data import train_test_val_split
 from spam_classifier.components.vectorizers import BowFeatureExtractor, TfidfFeatureExtractor
 from spam_classifier.components.models import MultinomialNaiveBayesClassifier, LogisticRegressionClassifier
 import os
+import mlflow
+import mlflow.sklearn
+
+from spam_classifier.utils.mlflow_utils import log_experiment_with_mlflow 
+
 
 logging.basicConfig(filename='logs/app.log', level=logging.INFO)
 def baseline_experiment_v1():
@@ -27,14 +31,33 @@ def baseline_experiment_v1():
         logging.info("Applying pipeline...")
         pipeline = Pipeline([
             ('vectorizer', BowFeatureExtractor()), 
-            ('classifier', MultinomialNaiveBayesClassifier())  
+            ('model', MultinomialNaiveBayesClassifier())  
         ])
         
         pipeline.fit(X_train, y_train)
         y_train_pred = pipeline.predict(X_train)
         y_test_pred = pipeline.predict(X_test)
         
-        return y_train_pred, y_test_pred
+        params = {
+            'vectorizer': type(pipeline.named_steps['vectorizer']).__name__,
+            'classifier': type(pipeline.named_steps['classifier']).__name__
+        }
+        metrics = {} 
+        
+        logging.info("Logging experiment with MLflow...")
+        log_experiment_with_mlflow(
+            run_name="Baseline Experiment v1",
+            params=params,
+            metrics=metrics,
+            figures={},  
+            pipeline=pipeline,
+            X_train=X_train,
+            y_train=y_train,
+            y_train_pred=y_train_pred,
+            X_test=X_test,
+            y_test=y_test,
+            y_test_pred=y_test_pred
+        )
 
     except Exception as e:
         logging.error(f"baseline_experiment_v1: {e}")

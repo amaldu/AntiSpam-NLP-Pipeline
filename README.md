@@ -43,6 +43,7 @@ This project is based on four datasets extracted from Kaggle
 - 1: spam/scam em-amils that we want to send directly to the spam folder
 
 2. ***text*** column with a list of messages without any type of format
+
 [Email Classification (Ham-Spam)](https://www.kaggle.com/datasets/prishasawhney/email-classification-ham-spam) 
 179 messages with the following columns:
 

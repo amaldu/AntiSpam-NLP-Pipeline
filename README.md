@@ -1,9 +1,6 @@
-# Spam Message Detector Model 
-
-
+# AntiSpam NLP Pipeline
 
 # Index of contents
-
 1. [Objective](#Objective)
 2. [About the data](#About-the-data)
 3. [Research](#Research) Theory behind Decision-Making Process 🚧
@@ -15,8 +12,7 @@
 
 
 # Objective
-
-This project presents a step-by-step guide to build an e-mail spam classification model.
+This purpose of this project is to create an end-to-end Text Classifier that classifies spam e-mails based on p guide to build an e-mail spam classification model.
 
 <p align="center">
   <img src="images/intro.png" width="500"/>
@@ -26,7 +22,10 @@ This project presents a step-by-step guide to build an e-mail spam classificatio
 
 
 # About the data
-The dataset used for this project can be found [here](https://www.kaggle.com/datasets/mfaisalqureshi/spam-email) which consists of 5,574 messages with the following columns: 
+This project is based on four datasets extracted from Kaggle
+
+[Spam Email](https://www.kaggle.com/datasets/mfaisalqureshi/spam-email) 
+ 5,572 messages with the following columns: 
 
 1. ***Category*** column with the following labels:
 
@@ -35,19 +34,49 @@ The dataset used for this project can be found [here](https://www.kaggle.com/dat
 
 2. ***Message*** column with a list of messages without any type of format
 
+[Spam Email Classification Dataset](https://www.kaggle.com/datasets/purusinghvi/email-spam-classification-dataset) 
+83446 messages with the following columns:
+
+1. ***label*** column with the following labels:
+
+- 0: real e-mails we want the filter to land our inbox
+- 1: spam/scam em-amils that we want to send directly to the spam folder
+
+2. ***text*** column with a list of messages without any type of format
+[Email Classification (Ham-Spam)](https://www.kaggle.com/datasets/prishasawhney/email-classification-ham-spam) 
+179 messages with the following columns:
+
+1. ***label*** column with the following labels:
+
+- ham: real e-mails we want the filter to land our inbox
+- spam: spam/scam em-amils that we want to send directly to the spam folder
+
+2. ***email*** column with a list of messages without any type of format
+
+[Spam email Dataset](https://www.kaggle.com/datasets/jackksoncsie/spam-email-dataset) 
+5695 messages with the following columns:
+
+1. ***spam*** column with the following labels:
+
+- 0: real e-mails we want the filter to land our inbox
+- 1: spam/scam em-amils that we want to send directly to the spam folder
+
+2. ***text*** column with a list of messages without any type of format
+
+
+
 # Research
 
 ## EDA
 [Notebook](https://github.com/AMaldu/spam_detector/blob/main/research/eda.ipynb)
-1. Analysis of basic information about the dataset.
+1. Basic overview of the dataset.
 
 4. Basic viz of features.    
 
 ## Preprocessing
 
 [Notebook](https://github.com/AMaldu/spam_detector/blob/main/research/preprocessing.ipynb)
-2. Change data types for more memory efficiency and data integrity.
-3. Removal of duplicates.
+
 1. Change of data types
 2. Drop duplicates
 3. Chars cleaning. Based on this [Notebook](https://github.com/AMaldu/spam_detector/blob/main/research/special_chars_analysis.ipynb)

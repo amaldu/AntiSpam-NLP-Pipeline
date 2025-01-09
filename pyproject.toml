@@ -3,8 +3,8 @@ name = "spam_detector"
 version = "0.1.0"
 description = "e-mail spam detector"
 authors = ["Maldu <contactme@gmail.com>"]
-# packages = [{ include = "spam_classifier" }]
 readme = "README.md"
+package-mode = false 
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"

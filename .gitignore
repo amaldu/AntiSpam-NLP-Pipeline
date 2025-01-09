@@ -10,4 +10,5 @@ __pycache__/
 
 .DS_Store
 .idea/
-.vscode/
+.vscode/data/bronze/raw_dataset.csv
+data/copper/combined_data.csv

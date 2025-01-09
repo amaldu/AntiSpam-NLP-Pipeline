@@ -10,61 +10,26 @@
 6. [Technologies](#Technologies) 🚧
 7. [Installation](#Installation) 🚧
 
-
-# Objective
-This purpose of this project is to create an end-to-end Text Classifier that classifies spam e-mails based on p guide to build an e-mail spam classification model.
-
 <p align="center">
   <img src="images/intro.png" width="500"/>
 </p>
 
+# Project Developer Roadmap
 
-
+This project started long time ago as a data science project for my personal portfolio with the goal of gaining experience in working with NLP techniques for text classification but I decided to make it grow and create a full implemented project with Machine Learning, Deep Learning (LLMs) and MLOps methods.
 
 # About the data
 This project is based on four datasets extracted from Kaggle
 
-[Spam Email](https://www.kaggle.com/datasets/mfaisalqureshi/spam-email) 
- 5,572 messages with the following columns: 
+[Spam Email](https://www.kaggle.com/datasets/mfaisalqureshi/spam-email) with 5,572 rows 
+[Spam Email Classification Dataset](https://www.kaggle.com/datasets/purusinghvi/email-spam-classification-dataset) with 83446 rows 
+[Email Classification (Ham-Spam)](https://www.kaggle.com/datasets/prishasawhney/email-classification-ham-spam) with 179 rows 
+[Spam email Dataset](https://www.kaggle.com/datasets/jackksoncsie/spam-email-dataset) with 5695 rows 
 
-1. ***Category*** column with the following labels:
+All datasets have a similar format consisting on two columns:
 
-- HAM: real e-mails we want the filter to land our inbox
-- SPAM: spam/scam em-amils that we want to send directly to the spam folder
-
-2. ***Message*** column with a list of messages without any type of format
-
-[Spam Email Classification Dataset](https://www.kaggle.com/datasets/purusinghvi/email-spam-classification-dataset) 
-83446 messages with the following columns:
-
-1. ***label*** column with the following labels:
-
-- 0: real e-mails we want the filter to land our inbox
-- 1: spam/scam em-amils that we want to send directly to the spam folder
-
-2. ***text*** column with a list of messages without any type of format
-
-[Email Classification (Ham-Spam)](https://www.kaggle.com/datasets/prishasawhney/email-classification-ham-spam) 
-179 messages with the following columns:
-
-1. ***label*** column with the following labels:
-
-- ham: real e-mails we want the filter to land our inbox
-- spam: spam/scam em-amils that we want to send directly to the spam folder
-
-2. ***email*** column with a list of messages without any type of format
-
-[Spam email Dataset](https://www.kaggle.com/datasets/jackksoncsie/spam-email-dataset) 
-5695 messages with the following columns:
-
-1. ***spam*** column with the following labels:
-
-- 0: real e-mails we want the filter to land our inbox
-- 1: spam/scam em-amils that we want to send directly to the spam folder
-
-2. ***text*** column with a list of messages without any type of format
-
-
+1. ***Message/text/email*** that contains the emails
+2. ***Message/label/spam*** that contains ham/spam or 0/1 values
 
 # Research
 

@@ -14,22 +14,22 @@
   <img src="images/intro.png" width="500"/>
 </p>
 
-# Project Developer Roadmap
+# Project Development Roadmap
 
 This project started long time ago as a data science project for my personal portfolio with the goal of gaining experience in working with NLP techniques for text classification but I decided to make it grow and create a full implemented project with Machine Learning, Deep Learning (LLMs) and MLOps methods.
 
 # About the data
 This project is based on four datasets extracted from Kaggle
 
-[Spam Email](https://www.kaggle.com/datasets/mfaisalqureshi/spam-email) with 5,572 rows 
-[Spam Email Classification Dataset](https://www.kaggle.com/datasets/purusinghvi/email-spam-classification-dataset) with 83446 rows 
-[Email Classification (Ham-Spam)](https://www.kaggle.com/datasets/prishasawhney/email-classification-ham-spam) with 179 rows 
-[Spam email Dataset](https://www.kaggle.com/datasets/jackksoncsie/spam-email-dataset) with 5695 rows 
+- [Spam Email](https://www.kaggle.com/datasets/mfaisalqureshi/spam-email) with 5,572 rows 
+- [Spam Email Classification Dataset](https://www.kaggle.com/datasets/purusinghvi/email-spam-classification-dataset) with 83446 rows 
+- [Email Classification (Ham-Spam)](https://www.kaggle.com/datasets/prishasawhney/email-classification-ham-spam) with 179 rows 
+- [Spam email Dataset](https://www.kaggle.com/datasets/jackksoncsie/spam-email-dataset) with 5695 rows 
 
 All datasets have a similar format consisting on two columns:
 
-1. ***Message/text/email*** that contains the emails
-2. ***Message/label/spam*** that contains ham/spam or 0/1 values
+1. *Message/text/email* that contains the emails
+2. *Message/label/spam* that contains ham/spam or 0/1 values
 
 # Research
 

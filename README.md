@@ -31,6 +31,8 @@ All datasets have a similar format consisting on two columns:
 1. *Message/text/email* that contains the emails
 2. *Message/label/spam* that contains ham/spam or 0/1 values
 
+Due to lfs constrains, none of the datasets nor the concatenated raw dataset created in the notebook inside 01_feature_pipeline
+
 # Research
 
 ## EDA

@@ -2,6 +2,8 @@ notebooks/02_baseline_model/mlruns/
 notebooks/experimentation/backend.db
 spam-detector.code-workspace
 research/03_text_augmentation/models/
+data/bronze
+data/copper
 .env
 .venv/
 __pycache__/

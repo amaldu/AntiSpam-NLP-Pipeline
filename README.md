@@ -36,9 +36,10 @@ Due to lfs constrains, none of the datasets nor the concatenated raw dataset cre
 # Research
 
 ## EDA
-[Notebook](https://github.com/AMaldu/spam_detector/blob/main/research/eda.ipynb)
-1. Basic overview of the dataset.
-
+[Notebook](https://github.com/AMaldu/spam_detector/blob/main/research/02_initial_eda_preprocessing/eda_train.ipynb)
+1. Basic overview of the training set features.
+2. Analysis of different approaches for feature engineering.
+3. Analysis of different approaches for data cleaning.
 4. Basic viz of features.    
 
 ## Preprocessing

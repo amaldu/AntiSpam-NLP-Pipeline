@@ -9,11 +9,10 @@ data/copper
 __pycache__/
 *.pyc
 *.pyo
-*.csv
 *.zip
 *.tar.gz
 
 .DS_Store
 .idea/
-.vscode/data/bronze/raw_dataset.csv
-data/copper/combined_data.csv
+
+

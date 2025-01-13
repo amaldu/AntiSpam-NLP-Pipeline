@@ -56,6 +56,7 @@ diskcache = "^5.6.3"
 textaugment = "^2.0.0"
 
 googletrans-python = "^0.2.0"
+click = "^8.1.8"
 
 [tool.poetry.group.env.dependencies]
 textblob = ">=0.15.3,<0.19.0"
@@ -66,6 +67,8 @@ pytest = "^7.2.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
 
 
 

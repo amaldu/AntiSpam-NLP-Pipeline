@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "e-mail spam detector"
 authors = ["Maldu <contactme@gmail.com>"]
 readme = "README.md"
-package-mode = false 
+package-mode = false
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
@@ -16,7 +16,7 @@ dvc = "^3.57.0"
 flask = "^2.2.1"
 imblearn = "^0.0"
 scikit-learn = "^1.5.2"
-numpy = ">=1.18.5,<2.0"  
+numpy = ">=1.18.5,<2.0"
 python-dotenv = "^1.0.1"
 pyyaml = "^6.0.2"
 textattack = "^0.3.10"
@@ -34,6 +34,8 @@ sentence-transformers = "^3.3.1"
 sacremoses = "^0.1.1"
 apache-airflow = "^2.10.4"
 matplotlib = "^3.10.0"
+spacy = "^3.8.3"
+optuna = "^4.1.0"
 
 [tool.poetry.group.dev.dependencies]
 matplotlib = "^3.9.2"
@@ -43,7 +45,6 @@ emoji = "^2.14.0"
 mlflow = "^2.18.0"
 wordcloud = "^1.9.4"
 tqdm = "^4.67.1"
-
 gensim = "4.3.3"
 psutil = "^6.1.0"
 pynvml = "^11.5.3"
@@ -54,9 +55,9 @@ notebook = "^7.3.1"
 ipynbname = "^2024.1.0.0"
 diskcache = "^5.6.3"
 textaugment = "^2.0.0"
-
 googletrans-python = "^0.2.0"
 click = "^8.1.8"
+spacy = "^3.8.3"
 
 [tool.poetry.group.env.dependencies]
 textblob = ">=0.15.3,<0.19.0"
@@ -67,7 +68,6 @@ pytest = "^7.2.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
 
 
 

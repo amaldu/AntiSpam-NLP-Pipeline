@@ -8,11 +8,11 @@ def train_test_val_split(df: pd.DataFrame) -> Tuple[pd.Series, pd.Series, pd.Ser
     try:
         logging.info("Starting train-test-validation split...")
 
-        if 'Message' not in df.columns or 'Category' not in df.columns:
-            raise KeyError("The DataFrame must contain 'Message' and 'Category' columns.")
+        if 'email' not in df.columns or 'label' not in df.columns:
+            raise KeyError("The DataFrame must contain 'email' and 'label' columns.")
 
-        X = df['Message']
-        y = df['Category']  
+        X = df['email']
+        y = df['label']  
 
         logging.debug("Splitting data into train and temporary sets...")
         X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=0.2, random_state=42)

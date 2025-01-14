@@ -12,28 +12,52 @@ import yaml
 
 from experimentation_pipeline.utils.experiments_utils import experiment_status, parse_config
 from experimentation_pipeline.components.data_ingestion import read_dataset
-
-
-config_path = os.path.join(os.path.dirname(__file__), '..', 'experiment_configs', 'base_config.yaml')
-# @click.command()
-# @click.argument("config_file", type=click.Path(exists=True, dir_okay=False), default=os.path.join("experimentation_pipeline", "experiment_configs", "config_file.yaml"))
+from experimentation_pipeline.components.data_preprocessing import get_preprocessing_pipeline
+from sklearn.pipeline import make_pipeline
+from experimentation_pipeline.components.models import get_model
+@click.command()
+@click.argument("config_file", type=click.Path(exists=True, dir_okay=False), default=os.path.join("experimentation_pipeline", "experiment_configs", "config_file.yaml"))
 def base_model_pipeline():
-    """
-    Train a simple model using the configuration file provided.
-
-    CONFIG_FILE: Path to the YAML configuration file.
-    """
+    base_config_path = os.path.join(os.path.dirname(__file__), '..', 'experiment_configs', 'base_config.yaml')
     logging.info("Loading basic configurations from base_config.yaml...")
     try:
-        with open(config_path, "r") as f:
-            basic_config = yaml.safe_load(f)
-        logging.info("Basic configurations loaded successfully.")
+        with open(base_config_path, "r") as f:
+            base_config = yaml.safe_load(f)
+        logging.info("Reading the dataset..")
+        data = read_dataset(base_config)
+        logging.info(f"Dataset read")
         
-        data = read_dataset(basic_config)
+        if not base_config['tune_hyperparams'] == False:
+            logging.info('Training the model with default hyperparameters')
+            pipeline = make_pipeline(
+                get_preprocessing_pipeline(),
+                get_model(base_config['model_type'])  # Usar el modelo con parámetros por defecto
+            )
+
+        else:
+            logging.info('Tuning hyperparameters')
+            pipeline = make_pipeline(
+                get_preprocessing_pipeline(),
+                get_model()
+            )
+
+
+
+
+
+
+
+
+        # find best hyperparameters using cross-validation
+        logger.info('Finding best hyperparameters with cross-validation')
+        
+        
+        
+    
 
     except Exception as e:
         logging.error(f"Error loading the dataset: {e}")
-    return data
+    
     
     
     

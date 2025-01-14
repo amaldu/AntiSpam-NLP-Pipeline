@@ -1,28 +1,28 @@
-from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+import pandas as pd
+import logging
 
-class BowFeatureExtractor(BaseEstimator, TransformerMixin):
-    def __init__(self, ngram_range=(1, 1), max_features=None):
-        self.ngram_range = ngram_range
-        self.max_features = max_features
-        self.vectorizer = CountVectorizer(ngram_range=self.ngram_range, max_features=self.max_features)
 
-    def fit(self, X, y=None):
-        self.vectorizer.fit(X)
-        return self
+def apply_vectorizer(config_file: str, X: pd.Series) -> pd.Series:
+    try: 
+        logging.info("Logging the vectorizer typeand params from config file")
+        vectorizer_type = config_file['vectorizer']['type']
+        vectorizer_params = config_file['vectorizer']['params']
+        logging.info(f"Vectorizer type is {vectorizer_type}")
+        logging.info (f"Vectorizer params are {vectorizer_params}")
+        
+        if vectorizer_type == "bow":
+            return CountVectorizer(**vectorizer_params)
+        elif vectorizer_type == "tfidf":
+            return TfidfVectorizer(**vectorizer_params)
+        else:
+            logging.error("Unknown vectorizer type or invalid format")
+            raise
+    except ValueError as e:
+        logging.error(f"Unsupported vectorizer type: {vectorizer_type}")
+        raise
+    except Exception as e:
+        logging.error(f"An error occurred while loading the dataset: {e}")
+        raise
+    
 
-    def transform(self, X):
-        return self.vectorizer.transform(X)
-
-class TfidfFeatureExtractor(BaseEstimator, TransformerMixin):
-    def __init__(self, ngram_range=(1, 1), max_features=None):
-        self.ngram_range = ngram_range
-        self.max_features = max_features
-        self.vectorizer = TfidfVectorizer(ngram_range=self.ngram_range, max_features=self.max_features)
-
-    def fit(self, X, y=None):
-        self.vectorizer.fit(X)
-        return self
-
-    def transform(self, X):
-        return self.vectorizer.transform(X)

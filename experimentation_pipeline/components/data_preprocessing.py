@@ -1,216 +1,157 @@
 import pandas as pd
-import re
-from string import punctuation
+from sklearn.preprocessing import FunctionTransformer
+from sklearn.pipeline import make_pipeline, Pipeline
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import logging
-import numpy as np
-from ..utils.textaug_techniques import TextAugmentation
+import spacy
+from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.pipeline import Pipeline
+from typing import Any, Tuple
+import os
+
+from experimentation_pipeline.components.split_data import train_test_val_split
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from experimentation_pipeline.components.data_ingestion import read_dataset
+import os
+import yaml
+import logging
+import click
 
 stop_words = set(stopwords.words('english'))
+nlp = spacy.load("en_core_web_sm")
+lemmatizer = WordNetLemmatizer()
 
 
-
-def clean_types_duplicates(df: pd.DataFrame) -> pd.DataFrame:
+def format_data(df: pd.DataFrame) -> Tuple[pd.Series, pd.Series, pd.Series, pd.Series, pd.Series, pd.Series]:
     try:
-        logging.info("Starting data cleaning: mapping 'Category' and converting 'Message' to string...")
-        df['email'] = df['email'].map({"ham": 0, "spam": 1}).astype(int)
-        logging.info("'email' column successfully converted to integer.")
+        logging.info("Starting data cleaning: converting 'label' to int...")
+        df['label'] = df['label'].map({"ham": 0, "spam": 1}).astype(int)
+        
+        logging.info("'label' column successfully converted to integer.")
         
         initial_count = len(df)
         df.drop_duplicates(inplace=True)
         final_count = len(df)
         logging.info(f"Duplicates removed: {initial_count - final_count} rows dropped.")
         
-        return df
+        logging.info (f"Reducing the dataframe into the columns of interest")
+        df = df[["email", "label"]]
+        
+        X_train, X_val, X_test, y_train, y_val, y_test = train_test_val_split(df)
+        return X_train, X_val, X_test, y_train, y_val, y_test
     
     except KeyError as e:
         logging.error(f"KeyError: Missing expected column in DataFrame - {e}")
         raise
-    
     except ValueError as e:
         logging.error(f"ValueError: Issue with data conversion - {e}")
-        raise
-    
+        raise    
     except Exception as e:
         logging.error(f"Unexpected error during data cleaning: {e}")
         raise
-
-
-
-def clean_text(text: str) -> str:
-    special_replacements = {
-        r"£": "pound",
-        r"$": "dollar",
-        r"€": "euro",
-        r"%": "percentage",
-        r"♣": "clover", 
-        r"®": "registered trademark",
-        r"©": "copyright",
-        r"☺": "emoji",
-        r"™": "trademark",
-    }
-    
-    chat_words = {
-        "afaik": "As Far As I Know",
-        "afk": "Away From Keyboard",
-        "asap": "As Soon As Possible",
-        "atk": "At The Keyboard",
-        "atm": "At The Moment",
-        "a3": "Anytime, Anywhere, Anyplace",
-        "bak": "Back At Keyboard",
-        "bbl": "Be Back Later",
-        "bbs": "Be Back Soon",
-        "bfn": "Bye For Now",
-        "b4n": "Bye For Now",
-        "brb": "Be Right Back",
-        "brt": "Be Right There",
-        "btw": "By The Way",
-        "b4": "Before",
-        "b4n": "Bye For Now",
-        "cu": "See You",
-        "cul8r": "See You Later",
-        "cya": "See You",
-        "faq": "Frequently Asked Questions",
-        "fc": "Fingers Crossed",
-        "fwiw": "For What It's Worth",
-        "fyi": "For Your Information",
-        "gal": "Get A Life",
-        "gg": "Good Game",
-        "gn": "Good Night",
-        "gmta": "Great Minds Think Alike",
-        "gr8": "Great!",
-        "g9": "Genius",
-        "ic": "I See",
-        "icq": "I Seek you (also a chat program)",
-        "ilu": "ILU: I Love You",
-        "imho": "In My Honest/Humble Opinion",
-        "imo": "In My Opinion",
-        "iow": "In Other Words",
-        "irl": "In Real Life",
-        "kiss": "Keep It Simple, Stupid",
-        "ldr": "Long Distance Relationship",
-        "lmao": "Laugh My A.. Off",
-        "lol": "Laughing Out Loud",
-        "ltns": "Long Time No See",
-        "l8r": "Later",
-        "mte": "My Thoughts Exactly",
-        "m8": "Mate",
-        "nrn": "No Reply Necessary",
-        "oic": "Oh I See",
-        "pita": "Pain In The A..",
-        "prt": "Party",
-        "prw": "Parents Are Watching",
-        "qpsa?": "Que Pasa?",
-        "rofl": "Rolling On The Floor Laughing",
-        "roflol": "Rolling On The Floor Laughing Out Loud",
-        "rotflmao": "Rolling On The Floor Laughing My A.. Off",
-        "sk8": "Skate",
-        "stats": "Your sex and age",
-        "asl": "Age, Sex, Location",
-        "thx": "Thank You",
-        "ttfn": "Ta-Ta For Now!",
-        "ttyl": "Talk To You Later",
-        "u": "You",
-        "u2": "You Too",
-        "u4e": "Yours For Ever",
-        "wb": "Welcome Back",
-        "wtf": "What The F...",
-        "wtg": "Way To Go!",
-        "wuf": "Where Are You From?",
-        "w8": "Wait...",
-        "7k": "Sick:-D Laugher",
-        "tfw": "That feeling when",
-        "mfw": "My face when",
-        "mrw": "My reaction when",
-        "ifyp": "I feel your pain",
-        "tntl": "Trying not to laugh",
-        "jk": "Just kidding",
-        "idc": "I don't care",
-        "ily": "I love you",
-        "imu": "I miss you",
-        "adih": "Another day in hell",
-        "zzz": "Sleeping, bored, tired",
-        "wywh": "Wish you were here",
-        "time": "Tears in my eyes",
-        "bae": "Before anyone else",
-        "fimh": "Forever in my heart",
-        "bsaaw": "Big smile and a wink",
-        "bwl": "Bursting with laughter",
-        "bff": "Best friends forever",
-        "csl": "Can't stop laughing"
-    }
-
-    
-    emoticon_pattern = re.compile(r"""
-    [:;=Xx]           
-    [-~]?             
-    [\)\]\(\[dDpP/]   
-    """, re.VERBOSE)
-    text = text.lower()
     
     
-    tokens = [re.sub(pattern, replacement, token) for token in tokens for pattern, replacement in special_replacements.items()]
-    tokens = [token.replace('\n', ' ') for token in tokens]
-    tokens = [re.sub(emoticon_pattern, 'emoji', token) for token in tokens]
-    tokens = [token.lower() for token in tokens]
-    tokens = [re.sub(r'\b' + re.escape(abbr) + r'\b', full_form, token) for token in tokens for abbr, full_form in chat_words.items()]
-    tokens = [re.sub('<[^<>]+>', ' ', token) for token in tokens]
-    tokens = [re.sub(r'http\S+|www.\S+', '', token) for token in tokens]
-    tokens = [re.sub(r'[0-9]+', 'number', token) for token in tokens]
-    tokens = [re.sub(r'[^\s]+@[^\s]+', 'emailaddr', token) for token in tokens]
-    tokens = [token.translate(str.maketrans('', '', punctuation)) for token in tokens]
-    tokens = [re.sub(r'[^a-zA-Z\s]', '', token) for token in tokens]
-    tokens = [re.sub(r'\s+', ' ', token).strip() for token in tokens]
-    return tokens
+    
+    
+
+class CustomTextProcessor(BaseEstimator, TransformerMixin):
+    def __init__(self, config_file: dict) -> None:
+        self.config_file = config_file
+        self.vectorizer = None
+
+    def fit(self, X: pd.Series, y: pd.Series = None) -> 'CustomTextProcessor':
+
+        logging.info("Fitting the CustomTextProcessor...")
+        vectorizer_type = self.config_file['vectorizer']['type']
+        vectorizer_params = self.config_file['vectorizer']['params']
+
+        if vectorizer_type == "bow":
+            self.vectorizer = CountVectorizer(**vectorizer_params)
+        elif vectorizer_type == "tfidf":
+            self.vectorizer = TfidfVectorizer(**vectorizer_params)
+        else:
+            logging.error("Unsupported vectorizer type: %s", vectorizer_type)
+            raise ValueError(f"Unsupported vectorizer type: {vectorizer_type}")
+
+        # Fit the vectorizer
+        self.vectorizer.fit(X)
+        return self
+
+    def transform(self, X: pd.Series) -> pd.DataFrame:
+
+        logging.info("Transforming text data...")
+
+        X_tokenized = tokenizer(self.config_file, X)
+        X_no_stopwords = X_tokenized['tokens'].apply(remove_stopwords)
+        X_lemmatized = X_no_stopwords.apply(lemmatize_text)
+        transformed_data = self.vectorizer.transform(X_lemmatized)
+        return transformed_data
 
 
-
-def remove_stopwords(tokens: list) -> list:
-    filtered_tokens = [word for word in tokens if word.lower() not in stop_words]
-    return filtered_tokens
-
-def lemmatize_text(tokens: list) -> str:
-    lemmatizer = WordNetLemmatizer()
-    lemmatized_tokens = [lemmatizer.lemmatize(word) for word in tokens]
-    return ' '.join(lemmatized_tokens)
-
-def preprocess(X_train: pd.Series, X_val: pd.Series, X_test: pd.Series, 
-               y_train: pd.Series, y_val: pd.Series, y_test: pd.Series) -> tuple:
-    try:
-        logging.info("Starting text preprocessing...")
+def tokenizer(config_file: str, X: pd.Series) -> pd.Series:
+    tokenizer_type = config_file['tokenizer']['type']
+    
+    if tokenizer_type == "nltk":
+        logging.info(f"Tokenizing with nltk tokenizer")
+        X_tokenized = X.apply(word_tokenize)  # Tokenize each entry in the series using nltk
         
-        processed_texts = []
+    elif tokenizer_type == "spacy":
+        logging.info(f"Tokenizing with spacy tokenizer")
+        X_tokenized = X.apply(lambda x: [token.text for token in nlp(x)])  # Tokenize using spacy
+    
+    else:
+        logging.error(f"Unsupported tokenizer type: {tokenizer_type}")
+        raise ValueError(f"Unsupported tokenizer type: {tokenizer_type}")
+    
+    return X_tokenized  
 
-        for text in X_train:
-            logging.debug("Cleaning text...")
-            cleaned_text = clean_text(str(text))
-            
-            logging.debug("Tokenizing text...")
-            tokens = word_tokenize(cleaned_text)
-            
-            logging.debug("Removing stopwords...")
-            text_without_stopwords = remove_stopwords(tokens)
-            
-            logging.debug("Lemmatizing text...")
-            preprocessed_text = lemmatize_text(text_without_stopwords)
-            
-            processed_texts.append(preprocessed_text)
 
-        X_train_processed = np.array(processed_texts)
+def remove_stopwords(tokens: pd.Series) -> pd.Series:
+    """Remove stopwords from a pandas Series of tokenized words."""
+    return tokens.apply(lambda word_list: [word for word in word_list if word.lower() not in stop_words])
+
+def lemmatize_text(tokens: pd.Series) -> pd.Series:
+    """Lemmatize a pandas Series of tokenized words."""
+    return tokens.apply(lambda word_list: ' '.join([lemmatizer.lemmatize(word) for word in word_list]))
+
+
+
+def get_preprocessing_pipeline(config_file: dict) -> Pipeline:
+    return make_pipeline(
+        FunctionTransformer(format_data),
+        CustomTextProcessor(config_file)
+    )
+
+
+
+# @click.command()
+# @click.argument("config_file", type=click.Path(exists=True))
+# def main(config_file):
+#     # Cargar configuraciones
+#     base_config_path = os.path.join(os.path.dirname(__file__), '..', 'experiment_configs', 'base_config.yaml')
+#     with open(base_config_path, "r") as f:
+#         basic_config = yaml.safe_load(f)
+#         logging.info("Basic configurations loaded successfully.")
         
-        X_train = X_train_processed
-        X_val = X_val.to_numpy()
-        X_test = X_test.to_numpy()
-        y_train = y_train.to_numpy()
-        y_val = y_val.to_numpy()
-        y_test = y_test.to_numpy()
 
-        logging.info("Text preprocessing completed successfully.")
-        
-        return X_train, X_val, X_test, y_train, y_val, y_test
+#     with open(config_file, 'r') as file:
+#         config = yaml.safe_load(file)
+#     logging.info("Experiment configuration loaded successfully.")
+#     print(config)
 
-    except Exception as e:
-        logging.error(f"Error during preprocessing: {e}")
-        raise ValueError(f"An error occurred during preprocessing: {e}")
+#     # Leer dataset
+#     data = read_dataset(basic_config)
+#     # Pipeline
+#     pipeline = get_preprocessing_pipeline(config)
+#     transformed_data = pipeline.fit_transform(data)
+
+#     # Salida
+#     print("Pipeline output:")
+#     print(transformed_data)
+
+
+# if __name__ == '__main__':
+#     logging.basicConfig(level=logging.INFO)
+#     main()

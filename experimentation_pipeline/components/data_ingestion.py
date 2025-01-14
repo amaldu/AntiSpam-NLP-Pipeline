@@ -8,7 +8,7 @@ import logging
 import exception
 
 def read_dataset(base_config: str) -> pd.DataFrame:
-    logging.info(f"Loading config from {base_config}")
+    logging.info(f"Loading the dataset path config from {base_config}")
     
     dataset_path = base_config['dataset']['path']
     dataset_file = base_config['dataset']['file']

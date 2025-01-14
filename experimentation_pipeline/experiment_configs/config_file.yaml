@@ -1,0 +1,10 @@
+tokenizer:
+  type: "nltk"
+
+vectorizer:
+type: "tfidf"  
+params:
+  ngram_range: [1, 2]
+  max_features: 1000
+
+tune_hyperparams: False
